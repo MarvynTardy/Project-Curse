@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraControler : MonoBehaviour
+public class CameraControlerArthur : MonoBehaviour
 {
     public Transform target;
 
     // ↓ variable utilisé pour créer le décalage entre la position du joueur et celle de la caméra
-    public Vector3 cameraOffset;
+    public Vector3 cameraOffset = new Vector3 (-5, -10, 0);
 
     public bool useOffsetValues;
 
-    public float rotateSpeed;
+    public float rotateSpeed = 1;
 
-    public Transform pivot;
+    // public Transform pivot;
 
     void Start()
     {
