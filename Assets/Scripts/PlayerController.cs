@@ -12,12 +12,14 @@ public class PlayerController : MonoBehaviour
     [Range(0, 5)]
     public float gravityScale = 1; // Variable qui gère l'attraction terrestre de notre character
 
-    private CharacterController controller;
+    private CharacterController m_Controller;
     private Vector3 m_MoveDirection;
+
+    public Animator animPlayer;
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        m_Controller = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -34,7 +36,7 @@ public class PlayerController : MonoBehaviour
         // ↓ Restaure la valeur de y avant qu'il soit Normalized pour pas que le normalized n'affecte l'axe y
         m_MoveDirection.y = yStore;
 
-        if (controller.isGrounded)
+        if (m_Controller.isGrounded)
         {
             if (Input.GetButtonDown("Jump"))
             {
@@ -46,19 +48,10 @@ public class PlayerController : MonoBehaviour
         m_MoveDirection.y = m_MoveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
 
         // On applique le vector de direction à la fonction préfaite du CC move qui gère sa direction et vélocité
-        controller.Move(m_MoveDirection * Time.deltaTime);
+        m_Controller.Move(m_MoveDirection * Time.deltaTime);
 
-        /*if (Input.GetButtonDown("Dash"))
-        {
-            Debug.Log("Dash");
-            _velocity += Vector3.Scale(transform.forward,
-                                       DashDistance * new Vector3((Mathf.Log(1f / (Time.deltaTime * Drag.x + 1)) / -Time.deltaTime),
-                                                                  0,
-                                                                  (Mathf.Log(1f / (Time.deltaTime * Drag.z + 1)) / -Time.deltaTime)));
-        }
-
-        _velocity.x /= 1 + Drag.x * Time.deltaTime;
-        _velocity.y /= 1 + Drag.y * Time.deltaTime;
-        _velocity.z /= 1 + Drag.z * Time.deltaTime;*/
+        // Gestion des conditions de l'animatior du player
+        animPlayer.SetBool("isGrounded", m_Controller.isGrounded);
+        animPlayer.SetFloat("Speed", (Mathf.Abs(Input.GetAxisRaw("Vertical")) + Mathf.Abs(Input.GetAxisRaw("Horizontal"))));
     }
 }
