@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 674738113}
   - component: {fileID: 674738112}
   - component: {fileID: 674738115}
+  - component: {fileID: 674738116}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -305,7 +306,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674738111}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cf9a8b4ca4fdf14cba5cbf6b391467c, type: 3}
   m_Name: 
@@ -314,6 +315,24 @@ MonoBehaviour:
   cameraOffset: {x: -5, y: -10, z: 0}
   useOffsetValues: 0
   rotateSpeed: 1
+--- !u!114 &674738116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674738111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393cc5004f4b5d643afd4d7510baf289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraAnchor: {fileID: 1835241972}
+  camOffset: {x: -5, y: -10, z: 0}
+  delayMovement: 1
+  rotationY: 1
+  rotationButton: 1
+  rotationSpeed: 1
 --- !u!1 &719358643
 GameObject:
   m_ObjectHideFlags: 0
