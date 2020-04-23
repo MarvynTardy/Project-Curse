@@ -312,10 +312,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAnchor: {fileID: 1835241972}
   camOffset: {x: 0, y: 0, z: 0}
-  delayMovement: 0.05
+  delayMovement: 0.5
   rotationY: 1
   rotationButton: 1
-  rotationSpeed: 5
+  rotationSpeed: 3
 --- !u!1 &719358643
 GameObject:
   m_ObjectHideFlags: 0
