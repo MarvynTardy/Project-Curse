@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    [Header("Movement Properties")]
+    [Range(1, 20)]
     public float moveSpeed = 8;
+    [Range(1, 20)]
     public float jumpForce = 150;
+    [Range(0, 5)]
+    public float gravityScale = 1; // Variable qui gère l'attraction terrestre de notre character
 
-    // ↓ Variable qui gère l'attraction terrestre de notre character
-    public float gravityScale = 1;
-    public CharacterController controller;
+    private CharacterController controller;
     private Vector3 m_MoveDirection;
-
-    /*
-    // Gestion du dash
-    public Vector3 Drag = new Vector3(1, 1, 1);
-    public float DashDistance = 100;
-    public Vector3 _velocity = new Vector3 (10, 10, 10);
-    */
 
     void Start()
     {
@@ -38,11 +33,6 @@ public class PlayerController : MonoBehaviour
 
         // ↓ Restaure la valeur de y avant qu'il soit Normalized pour pas que le normalized n'affecte l'axe y
         m_MoveDirection.y = yStore;
-
-
-
-        // On incrémente le vecteur de direction en fonction de l'axe sur laquelle le joueur appuis (paramétrer dans le Settings de Unity)
-        // m_MoveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, m_MoveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
 
         if (controller.isGrounded)
         {

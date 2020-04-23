@@ -4,61 +4,47 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform cameraAnchor;
+    [Header("Joueur")]
+    public Transform target;
 
-    public Vector3 camOffset;
+    [Header("Propriétés de la caméra")]
+    // ↓ variable utilisé pour créer le décalage entre la position du joueur et celle de la caméra
+    public Vector3 cameraOffset = new Vector3 (-5, -10, 0);
 
-    [Range(0.01f, 1.0f)]
-    public float delayMovement = 0.5f;
+    public bool useOffsetValues = true;
 
-    public bool rotationY = true;
-
-    public bool rotationButton = true;
-
-    public float rotationSpeed = 5.0f;
+    public float rotateSpeed = 1;
 
     void Start()
     {
-        camOffset = transform.position - cameraAnchor.position;
-    }
-
-    private bool isRotateActive
-    {
-        get
+        if (!useOffsetValues)
         {
-            if (!rotationY)
-                return false;
-
-            if (!rotationButton)
-                return true;
-
-            if (rotationButton && Input.GetMouseButton(2))
-                return true;
-
-            return false;
+            cameraOffset = target.position - transform.position;
         }
+
+        // Permet de désactiver le curseur en play
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
+
     void LateUpdate()
     {
+        float m_Horizontal = 0;
+        target.Rotate(0, m_Horizontal, 0);
 
-        transform.LookAt(cameraAnchor);
-
-        if (isRotateActive)
+        if (Input.GetMouseButton(2))
         {
-            Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotationSpeed, Vector3.up);
-
-            camOffset = camTurnAngle * camOffset;
+            // Récupère la position de la souris & rotate la target
+            m_Horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
+            target.Rotate(0, m_Horizontal, 0);
         }
+        
+        float desiredYAngle = target.eulerAngles.y;
 
-        Vector3 newPos = cameraAnchor.position + camOffset;
+        Quaternion rotation = Quaternion.Euler(0, desiredYAngle, 0);
+        transform.position = target.position - (rotation * cameraOffset);
 
-        transform.position = Vector3.Slerp(transform.position, newPos, delayMovement);
-
-        if(Input.GetAxis("Mouse X") < 0)
-        {
-
-        }
+        // Permet à la caméra de toujours regarder dans la direction de la cible (joueur)
+        transform.LookAt(target);
     }
 }
