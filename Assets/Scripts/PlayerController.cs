@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Dash Properties")]
+    [Range(0.1f, 10.0f)]
+    public float DashDistance = 0.8f; // Variable pour tweaker la distance du Dash.
+
     [Header("Movement Properties")]
     [Range(1, 20)]
     public float moveSpeed = 8;
@@ -42,8 +46,20 @@ public class PlayerController : MonoBehaviour
             {
                 m_MoveDirection.y = jumpForce;
             }
+            // ↓ Si la touche "Dash" est préssé alors..
+            if (Input.GetButtonDown("Dash"))
+            {
+                Debug.Log("Dash!");
+                // ↓ On dash dans la diréction dans laquel on se mouvoie déja.
+                m_Controller.Move(m_MoveDirection * DashDistance);
+            }
+            else
+            {
+                // ↓ Si on ne dash pas, c'est qu'on ne bouge pas, donc le movedirection est a 0.
+                m_MoveDirection = Vector3.zero;
+            }
         }
-
+    
         // Gestion de la chute en l'air
         m_MoveDirection.y = m_MoveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
 

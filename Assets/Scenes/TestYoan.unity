@@ -302,8 +302,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719358643}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalPosition: {x: -0.0000014305, y: 0, z: 0}
+  m_LocalScale: {x: 25, y: 5, z: 25}
   m_Children: []
   m_Father: {fileID: 1797925252}
   m_RootOrder: 0
@@ -745,6 +745,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 351355413047988645, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 6911099589462832222}
     - target: {fileID: 6911099588973962665, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -800,10 +805,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6911099588973962669, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: DashDistance
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 6911099588973962675, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6469981809684858298, guid: 0473017190771e94880b0e52b1d4613c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0473017190771e94880b0e52b1d4613c, type: 3}
+--- !u!4 &6911099589462832222 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6391227910427336240, guid: 0473017190771e94880b0e52b1d4613c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6911099589462832221}
+  m_PrefabAsset: {fileID: 0}
