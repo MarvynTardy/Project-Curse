@@ -824,6 +824,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96ebff76f1eab7a4aa85aa5a5a1be081, type: 3}
+--- !u!1 &1003566163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1003566164}
+  m_Layer: 0
+  m_Name: Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1003566164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003566163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1103791031}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1074009521
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,6 +946,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1103791031 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 514589902606067638, guid: 2b1cc1b9ef4cdda4aa116bdf5a425149,
+    type: 3}
+  m_PrefabInstance: {fileID: 514589901935724660}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1279580920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1192,11 @@ PrefabInstance:
       propertyPath: cameraOffset.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 514589902606067639, guid: 2b1cc1b9ef4cdda4aa116bdf5a425149,
+        type: 3}
+      propertyPath: pivot
+      value: 
+      objectReference: {fileID: 1003566164}
     - target: {fileID: 514589902606067659, guid: 2b1cc1b9ef4cdda4aa116bdf5a425149,
         type: 3}
       propertyPath: m_Name
@@ -1240,6 +1281,16 @@ PrefabInstance:
       propertyPath: DashDistance
       value: 0.9
       objectReference: {fileID: 0}
+    - target: {fileID: 6911099588973962669, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: pivot
+      value: 
+      objectReference: {fileID: 1003566164}
+    - target: {fileID: 6911099588973962669, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: playerModel
+      value: 
+      objectReference: {fileID: 1811644410}
     - target: {fileID: 6911099588973962671, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
       propertyPath: m_Enabled

@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 m_MoveDirection;
 
     public Animator animPlayer;
+    public Transform pivot;
+    public float rotateSpeed;
+
+    public GameObject playerModel;
 
     void Start()
     {
@@ -46,6 +50,7 @@ public class PlayerController : MonoBehaviour
             {
                 m_MoveDirection.y = jumpForce;
             }
+            /*
             // ↓ Si la touche "Dash" est préssé alors..
             if (Input.GetButtonDown("Dash"))
             {
@@ -57,16 +62,23 @@ public class PlayerController : MonoBehaviour
             {
                 // ↓ Si on ne dash pas, c'est qu'on ne bouge pas, donc le movedirection est a 0.
                 m_MoveDirection = Vector3.zero;
-            }
+            }*/
         }
-    
+
         // Gestion de la chute en l'air
         m_MoveDirection.y = m_MoveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
 
         // On applique le vector de direction à la fonction préfaite du CC move qui gère sa direction et vélocité
         m_Controller.Move(m_MoveDirection * Time.deltaTime);
 
-        // Gestion des conditions de l'animatior du player
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
+            Quaternion newRotation = Quaternion.LookRotation(new Vector3(m_MoveDirection.x, 0f, m_MoveDirection.z));
+            playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
+        }
+
+        // Gestion des conditions de l'animator du player
         animPlayer.SetBool("isGrounded", m_Controller.isGrounded);
         animPlayer.SetFloat("Speed", (Mathf.Abs(Input.GetAxisRaw("Vertical")) + Mathf.Abs(Input.GetAxisRaw("Horizontal"))));
     }
