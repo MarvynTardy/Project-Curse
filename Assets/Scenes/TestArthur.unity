@@ -1009,6 +1009,12 @@ Transform:
   m_Father: {fileID: 1797925252}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -32.368, y: 0, z: 0}
+--- !u!4 &1601161133 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6391227910427336240, guid: 0473017190771e94880b0e52b1d4613c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6911099589462832221}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1797925251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,6 +1170,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 351355413047988645, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 1601161133}
     - target: {fileID: 6911099588973962665, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1224,6 +1235,11 @@ PrefabInstance:
       propertyPath: animPlayer
       value: 
       objectReference: {fileID: 1811644412}
+    - target: {fileID: 6911099588973962669, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: DashDistance
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 6911099588973962671, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
       propertyPath: m_Enabled
