@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
             {
                 m_MoveDirection.y = jumpForce;
             }
-            
+
             // ↓ Si la touche "Dash" est préssé alors..
             if (Input.GetButtonDown("Dash"))
             {

@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 
     public bool useOffsetValues = true;
 
-    public float rotateSpeed = 1;
+    public float rotateSpeed = 5;
 
     public Transform pivot;
 
