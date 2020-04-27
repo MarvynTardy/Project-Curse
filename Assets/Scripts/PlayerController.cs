@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
             {
                 m_MoveDirection.y = jumpForce;
             }
-            /*
+            
             // ↓ Si la touche "Dash" est préssé alors..
             if (Input.GetButtonDown("Dash"))
             {
@@ -58,11 +58,11 @@ public class PlayerController : MonoBehaviour
                 // ↓ On dash dans la diréction dans laquel on se mouvoie déja.
                 m_Controller.Move(m_MoveDirection * DashDistance);
             }
-            else
+            else if (Input.GetButtonUp("Dash"))
             {
                 // ↓ Si on ne dash pas, c'est qu'on ne bouge pas, donc le movedirection est a 0.
                 m_MoveDirection = Vector3.zero;
-            }*/
+            }
         }
 
         // Gestion de la chute en l'air
