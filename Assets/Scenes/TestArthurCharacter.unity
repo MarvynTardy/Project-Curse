@@ -307,6 +307,11 @@ PrefabInstance:
       propertyPath: pivot
       value: 
       objectReference: {fileID: 295642160}
+    - target: {fileID: 6911099588973962669, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: rotateSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6911099588973962671, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
       propertyPath: m_Enabled

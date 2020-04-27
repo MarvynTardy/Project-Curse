@@ -22,7 +22,7 @@ public class HealthComponent : MonoBehaviour
     }
     void Die()
     {
-        Debug.Log("Enemy is Dead");
+        Debug.Log(this.gameObject + " is Dead");
     }
 }
 

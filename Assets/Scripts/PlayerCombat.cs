@@ -12,7 +12,7 @@ public class PlayerCombat : MonoBehaviour
    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetButtonDown("Attack"))
         {
             Attack();
         }
