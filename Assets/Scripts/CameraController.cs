@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
         pivot.transform.parent = null;
 
         // Permet de désactiver le curseur en play
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 
