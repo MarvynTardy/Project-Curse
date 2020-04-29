@@ -7,8 +7,8 @@ public class PlayerCombat : MonoBehaviour
     
     public Transform attackPoint;
     public LayerMask enemyLayer;
-    public float attackRange;
-    public int attackDamage;
+    public float attackRange = 2;
+    public int attackDamage = 1;
    
     void Update()
     {
@@ -29,7 +29,7 @@ public class PlayerCombat : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        if (attackPoint != null)
+        if (attackPoint == null)
             return;
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);

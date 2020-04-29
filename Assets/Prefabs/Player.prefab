@@ -19,7 +19,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &4165111854872476321
+--- !u!114 &6683687434675266537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127444211277007023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22fde1f5444ab504e976179c366f7777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 655643699750711572}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  attackRange: 2
+  attackDamage: 2
+--- !u!1 &3092448888352234205
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -27,7 +45,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6391227910427336240}
+  - component: {fileID: 655643699750711572}
   m_Layer: 0
   m_Name: AttackPoint
   m_TagString: Untagged
@@ -35,19 +53,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6391227910427336240
+--- !u!4 &655643699750711572
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4165111854872476321}
+  m_GameObject: {fileID: 3092448888352234205}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.053333335, y: 0.6, z: 0.6666667}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_Children: []
-  m_Father: {fileID: 6911099588973962665}
-  m_RootOrder: 0
+  m_Father: {fileID: 4008093774412413628}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6911099588973962675
 GameObject:
@@ -60,7 +78,6 @@ GameObject:
   - component: {fileID: 6911099588973962665}
   - component: {fileID: 6911099588973962670}
   - component: {fileID: 6911099588973962669}
-  - component: {fileID: 351355413047988645}
   - component: {fileID: 6911099588973962674}
   - component: {fileID: 6911099588973962671}
   m_Layer: 0
@@ -81,7 +98,6 @@ Transform:
   m_LocalPosition: {x: -2.4, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6391227910427336240}
   - {fileID: 4008093774412413628}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -116,24 +132,6 @@ MonoBehaviour:
   animPlayer: {fileID: 3987848130879738278}
   pivot: {fileID: 0}
   playerModel: {fileID: 127444211277007023}
---- !u!114 &351355413047988645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6911099588973962675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22fde1f5444ab504e976179c366f7777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPoint: {fileID: 6391227910427336240}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  attackRange: 0
-  attackDamage: 0
 --- !u!143 &6911099588973962674
 CharacterController:
   m_ObjectHideFlags: 0
@@ -236,7 +234,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a031cd05735ec8443a0b8a82dc512c95,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a031cd05735ec8443a0b8a82dc512c95,
         type: 3}

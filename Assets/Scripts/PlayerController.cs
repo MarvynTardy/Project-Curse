@@ -33,10 +33,12 @@ public class PlayerController : MonoBehaviour
     private CharacterController m_Controller;
     private Vector3 m_MoveDirection;
     private bool m_IsMovable = true;
+    private Camera m_MainCamera;
 
     void Start()
     {
         m_Controller = GetComponent<CharacterController>();
+        m_MainCamera = FindObjectOfType<Camera>();
     }
 
     void Update()
@@ -74,7 +76,6 @@ public class PlayerController : MonoBehaviour
             // ↓ Si la touche "Dash" est préssé alors..
             if (Input.GetButtonDown("Dash"))
             {
-                Debug.Log("Dash!");
                 // ↓ On dash dans la diréction dans laquel on se mouvoie déja.
                 m_Controller.Move(m_MoveDirection * DashDistance);
             }
@@ -91,11 +92,22 @@ public class PlayerController : MonoBehaviour
         // On applique le vector de direction à la fonction préfaite du CC move qui gère sa direction et vélocité
         m_Controller.Move(m_MoveDirection * Time.deltaTime);
 
+        // Ciblage à la souris
+        Ray m_CameraRay = m_MainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane m_GroundPlane = new Plane(Vector3.up, Vector3.zero);
+        float m_RayLength;
+
+        if (m_GroundPlane.Raycast(m_CameraRay, out m_RayLength) && Input.GetButtonDown("Attack"))
+        {
+            Vector3 m_PointToLook = m_CameraRay.GetPoint(m_RayLength);
+            Debug.DrawLine(m_CameraRay.origin, m_PointToLook, Color.blue);
+            playerModel.transform.LookAt(new Vector3(m_PointToLook.x, playerModel.transform.position.y, m_PointToLook.z));
+        }
+
 
         // Gestion des conditions de l'animator du player
         animPlayer.SetBool("isGrounded", m_Controller.isGrounded);
         animPlayer.SetFloat("Speed", (Mathf.Abs(Input.GetAxisRaw("Vertical")) + Mathf.Abs(Input.GetAxisRaw("Horizontal"))));
-
         if (Input.GetButtonDown("Attack"))
         {
             animPlayer.SetTrigger("isAttack");
