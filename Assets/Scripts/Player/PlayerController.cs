@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public Animator animPlayer;
     public Transform pivot;
     public GameObject playerModel;
+    public ShootController shootAttack;
 
     private CharacterController m_Controller;
     private Vector3 m_MoveDirection;
@@ -104,6 +105,18 @@ public class PlayerController : MonoBehaviour
             playerModel.transform.LookAt(new Vector3(m_PointToLook.x, playerModel.transform.position.y, m_PointToLook.z));
         }
 
+        if (m_GroundPlane.Raycast(m_CameraRay, out m_RayLength) && Input.GetMouseButtonDown(1))
+        {
+            shootAttack.isFiring = true;
+            Vector3 m_PointToLook = m_CameraRay.GetPoint(m_RayLength);
+            Debug.DrawLine(m_CameraRay.origin, m_PointToLook, Color.blue);
+            playerModel.transform.LookAt(new Vector3(m_PointToLook.x, playerModel.transform.position.y, m_PointToLook.z));
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        { 
+            shootAttack.isFiring = false;
+        }
 
         // Gestion des conditions de l'animator du player
         animPlayer.SetBool("isGrounded", m_Controller.isGrounded);
@@ -115,8 +128,8 @@ public class PlayerController : MonoBehaviour
             Invoke("SetMovable", attackCooldown);
             m_Controller.Move(m_MoveDirection * attackBounce);
         }
-
     }
+
     public void SetMovable()
     {
         m_IsMovable = true;
