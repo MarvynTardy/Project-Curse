@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [Header("Dash Properties")]
     [Range(0.1f, 10.0f)]
     public float DashDistance = 0.8f; // Variable pour tweaker la distance du Dash.
+    public float DashVelocity = 1;
 
     [Header("Attack Properties")]
     [Range(0, 1)]
@@ -59,7 +60,6 @@ public class PlayerController : MonoBehaviour
                 playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
             }
         }
-        
 
         // ↓ Permet de gérer le déplacement en diagonal
         m_MoveDirection = m_MoveDirection.normalized * moveSpeed;

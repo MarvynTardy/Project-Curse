@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFiring: 0
   bullet: {fileID: 6090288033085508619, guid: 85a88a0cd3cb4614c9bf81cf8ccbd925, type: 3}
-  bulletSpeed: 8
+  bulletSpeed: 50
   timeBetweenShots: 30
   firePoint: {fileID: 8905879182939600005}
 --- !u!1 &3092448888352234205
