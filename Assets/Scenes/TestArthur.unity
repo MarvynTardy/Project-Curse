@@ -929,11 +929,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cursor
       objectReference: {fileID: 0}
-    - target: {fileID: 3987848130879738278, guid: 0473017190771e94880b0e52b1d4613c,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 62932a93e8763d747a1e36922cda4471, type: 2}
     - target: {fileID: 6391227910427336240, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
       propertyPath: m_RootOrder

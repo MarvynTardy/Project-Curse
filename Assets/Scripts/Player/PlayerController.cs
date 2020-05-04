@@ -47,27 +47,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // ↓ Permet de stocker la valeur du déplacement en y
-        float yStore = m_MoveDirection.y;
 
         if (m_IsMovable)
         {
-            // ↓ Permet de gérer la direction du personnage relativement à sa position dans l'espace
-            m_MoveDirection = (transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"));
-
-            if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
-            {
-                transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
-                Quaternion newRotation = Quaternion.LookRotation(new Vector3(m_MoveDirection.x, 0f, m_MoveDirection.z));
-                playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
-            }
+            Move();
         }
 
-        // ↓ Permet de gérer le déplacement en diagonal
-        m_MoveDirection = m_MoveDirection.normalized * moveSpeed;
-
-        // ↓ Restaure la valeur de y avant qu'il soit Normalized pour pas que le normalized n'affecte l'axe y
-        m_MoveDirection.y = yStore;
 
         if (m_Controller.isGrounded)
         {
@@ -136,6 +121,27 @@ public class PlayerController : MonoBehaviour
             Invoke("SetMovable", attackCooldown);
             m_Controller.Move(m_MoveDirection * attackBounce);
         }
+    }
+
+    public void Move()
+    {
+        // ↓ Permet de stocker la valeur du déplacement en y
+        float yStore = m_MoveDirection.y;
+        
+        // ↓ Permet de gérer la direction du personnage relativement à sa position dans l'espace
+        m_MoveDirection = (transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"));
+
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
+            Quaternion newRotation = Quaternion.LookRotation(new Vector3(m_MoveDirection.x, 0f, m_MoveDirection.z));
+            playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
+        }
+        // ↓ Permet de gérer le déplacement en diagonal
+        m_MoveDirection = m_MoveDirection.normalized * moveSpeed;
+        
+        // ↓ Restaure la valeur de y avant qu'il soit Normalized pour pas que le normalized n'affecte l'axe y
+        m_MoveDirection.y = yStore;
     }
 
     public void SetMovable()
