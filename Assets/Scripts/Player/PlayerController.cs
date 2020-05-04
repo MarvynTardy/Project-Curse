@@ -47,25 +47,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        MouseTarget();
 
         if (m_IsMovable)
         {
             Move();
         }
 
-
         if (m_Controller.isGrounded)
         {
             if (Input.GetButtonDown("Jump"))
             {
-                m_MoveDirection.y = jumpForce;
+                Jump();
             }
 
-            // ↓ Si la touche "Dash" est préssé alors..
             if (Input.GetButtonDown("Dash"))
             {
-                // ↓ On dash dans la diréction dans laquel on se mouvoie déja.
-                m_Controller.Move(m_MoveDirection * DashDistance);
+                Dash();
             }
             else if (Input.GetButtonUp("Dash"))
             {
@@ -76,40 +74,8 @@ public class PlayerController : MonoBehaviour
 
         // Gestion de la chute en l'air
         m_MoveDirection.y = m_MoveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
-
         // On applique le vector de direction à la fonction préfaite du CC move qui gère sa direction et vélocité
         m_Controller.Move(m_MoveDirection * Time.deltaTime);
-
-        // Ciblage à la souris
-        Ray m_CameraRay = m_MainCamera.ScreenPointToRay(Input.mousePosition);
-        Plane m_GroundPlane = new Plane(Vector3.up, Vector3.zero);
-        float m_RayLength;
-
-        if (m_GroundPlane.Raycast(m_CameraRay, out m_RayLength))
-        {
-            Vector3 m_PointToLook = m_CameraRay.GetPoint(m_RayLength);
-            Debug.DrawLine(m_CameraRay.origin, m_PointToLook, Color.blue);
-            playerModel.transform.LookAt(new Vector3(m_PointToLook.x, playerModel.transform.position.y, m_PointToLook.z));
-            DisplayFBDrop(new Vector3(m_PointToLook.x, 1f, m_PointToLook.z));
-        }
-
-        if (m_GroundPlane.Raycast(m_CameraRay, out m_RayLength) && Input.GetMouseButtonDown(1))
-        {
-            shootAttack.isFiring = true;
-            Vector3 m_PointToLook = m_CameraRay.GetPoint(m_RayLength);
-            Debug.DrawLine(m_CameraRay.origin, m_PointToLook, Color.blue);
-            playerModel.transform.LookAt(new Vector3(m_PointToLook.x, playerModel.transform.position.y, m_PointToLook.z));
-        }
-
-        if (Input.GetMouseButtonUp(1))
-        { 
-            shootAttack.isFiring = false;
-        }
-
-        if (cursor.activeSelf)
-        {
-            cursor.transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z));
-        }
 
         // Gestion des conditions de l'animator du player
         animPlayer.SetBool("isGrounded", m_Controller.isGrounded);
@@ -142,6 +108,51 @@ public class PlayerController : MonoBehaviour
         
         // ↓ Restaure la valeur de y avant qu'il soit Normalized pour pas que le normalized n'affecte l'axe y
         m_MoveDirection.y = yStore;
+    }
+
+    public void Jump()
+    {
+        m_MoveDirection.y = jumpForce;
+    }
+
+    public void Dash()
+    {
+        // ↓ On dash dans la diréction dans laquel on se mouvoie déja.
+        m_Controller.Move(m_MoveDirection * DashDistance);
+    }
+
+    public void MouseTarget()
+    {
+        // Ciblage à la souris
+        Ray m_CameraRay = m_MainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane m_GroundPlane = new Plane(Vector3.up, Vector3.zero);
+        float m_RayLength;
+
+        if (m_GroundPlane.Raycast(m_CameraRay, out m_RayLength))
+        {
+            Vector3 m_PointToLook = m_CameraRay.GetPoint(m_RayLength);
+            Debug.DrawLine(m_CameraRay.origin, m_PointToLook, Color.blue);
+            DisplayFBDrop(new Vector3(m_PointToLook.x, 1f, m_PointToLook.z));
+            if (Input.GetButtonDown("Attack") || Input.GetMouseButtonDown(1))
+            {
+                playerModel.transform.LookAt(new Vector3(m_PointToLook.x, playerModel.transform.position.y, m_PointToLook.z));
+                if (Input.GetMouseButtonDown(1))
+                {
+                    shootAttack.isFiring = true;
+                }
+            }
+
+            if (Input.GetMouseButtonUp(1))
+            {
+                shootAttack.isFiring = false;
+            }
+        }
+
+        // Gestion de la roation du curseur
+        if (cursor.activeSelf)
+        {
+            cursor.transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+        }
     }
 
     public void SetMovable()
