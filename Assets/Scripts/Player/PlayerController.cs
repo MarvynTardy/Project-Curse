@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public Transform pivot;
     public GameObject playerModel;
     public ShootController shootAttack;
+    public GameObject cursor;
 
     private CharacterController m_Controller;
     private Vector3 m_MoveDirection;
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         m_Controller = GetComponent<CharacterController>();
         m_MainCamera = FindObjectOfType<Camera>();
+        Cursor.visible = false;
     }
 
     void Update()
@@ -98,11 +100,12 @@ public class PlayerController : MonoBehaviour
         Plane m_GroundPlane = new Plane(Vector3.up, Vector3.zero);
         float m_RayLength;
 
-        if (m_GroundPlane.Raycast(m_CameraRay, out m_RayLength) && Input.GetButtonDown("Attack"))
+        if (m_GroundPlane.Raycast(m_CameraRay, out m_RayLength))
         {
             Vector3 m_PointToLook = m_CameraRay.GetPoint(m_RayLength);
             Debug.DrawLine(m_CameraRay.origin, m_PointToLook, Color.blue);
             playerModel.transform.LookAt(new Vector3(m_PointToLook.x, playerModel.transform.position.y, m_PointToLook.z));
+            DisplayFBDrop(new Vector3(m_PointToLook.x, 1f, m_PointToLook.z));
         }
 
         if (m_GroundPlane.Raycast(m_CameraRay, out m_RayLength) && Input.GetMouseButtonDown(1))
@@ -116,6 +119,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonUp(1))
         { 
             shootAttack.isFiring = false;
+        }
+
+        if (cursor.activeSelf)
+        {
+            cursor.transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z));
         }
 
         // Gestion des conditions de l'animator du player
@@ -133,5 +141,10 @@ public class PlayerController : MonoBehaviour
     public void SetMovable()
     {
         m_IsMovable = true;
+    }
+    private void DisplayFBDrop(Vector3 pos)
+    {
+        cursor.SetActive(true);
+        cursor.transform.position = pos;
     }
 }
