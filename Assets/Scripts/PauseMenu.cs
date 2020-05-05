@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     public static bool gameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    //public GameObject playerHUD;
 
     private void Update()
     {
@@ -29,6 +30,7 @@ public class PauseMenu : MonoBehaviour
     {
         //Cursor.lockState = CursorLockMode.Locked;
         pauseMenuUI.SetActive(false);
+        //playerHUD.SetActive(true);
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
@@ -37,6 +39,7 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         pauseMenuUI.SetActive(true);
+        //playerHUD.SetActive(false);
         Time.timeScale = 0f;
         gameIsPaused = true;
     }
@@ -45,6 +48,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
+        //playerHUD.SetActive(true);
         gameIsPaused = false;
         SceneManager.LoadScene("MainMenu");
     }
