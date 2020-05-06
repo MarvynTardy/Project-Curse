@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    public PlayerHUD healthBar;
+
     [Header("Movement Properties")]
     [Range(1, 20)]
     public float moveSpeed = 8;
