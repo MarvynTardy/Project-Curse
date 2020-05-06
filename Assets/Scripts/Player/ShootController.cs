@@ -29,4 +29,9 @@ public class ShootController : MonoBehaviour
             newBullet.speed = bulletSpeed;            
         }
     }
+
+    public void Fire()
+    {
+
+    }
 }
