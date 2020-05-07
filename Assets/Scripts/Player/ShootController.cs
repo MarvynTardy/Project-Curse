@@ -47,4 +47,9 @@ public class ShootController : MonoBehaviour
             }
         }
     }
+
+    public void Fire()
+    {
+
+    }
 }

@@ -9,6 +9,7 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask enemyLayer;
     public float attackRange = 2;
     public int attackDamage = 1;
+    public ShootController shootController;
    
     void Update()
     {
@@ -34,5 +35,11 @@ public class PlayerCombat : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         
+    }
+
+    public void TestEvent(float val)
+    {
+        Debug.Log("cokfc" + val);
+
     }
 }

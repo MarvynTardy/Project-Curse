@@ -89,6 +89,10 @@ public class PlayerController : MonoBehaviour
             Invoke("SetMovable", attackCooldown);
             m_Controller.Move(m_MoveDirection * attackBounce);
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            animPlayer.SetTrigger("isFiring");
+        }
     }
 
     public void Move()

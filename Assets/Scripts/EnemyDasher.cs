@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyDasher : MonoBehaviour
 {
-    
+    public Animator animMonster;
     // Variables Dash
     public float dashForce;
     public float dashTime;
@@ -16,6 +16,7 @@ public class EnemyDasher : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+       
     }
 
     // Update is called once per frame
@@ -41,5 +42,6 @@ public class EnemyDasher : MonoBehaviour
         rb.AddForce(transform.forward * dashForce, ForceMode.VelocityChange);
         yield return new WaitForSeconds(dashTime);
         rb.velocity = Vector3.zero;
+        animMonster.SetTrigger("isAttack");
     }
 }
