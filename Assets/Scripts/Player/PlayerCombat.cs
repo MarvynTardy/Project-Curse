@@ -26,7 +26,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (Time.time >= m_NextAttackTime)
         {
-            if (Input.GetButtonDown("Attack"))
+            if (Input.GetButtonDown("Attack") && !m_PlayerController.isDodging)
             {
                 Attack();
                 m_NextAttackTime = Time.time + 1f / attackRate;

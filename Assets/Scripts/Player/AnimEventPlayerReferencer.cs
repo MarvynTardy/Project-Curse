@@ -16,6 +16,11 @@ public class AnimEventPlayerReferencer : MonoBehaviour
 
     }
 
+    public void Dash()
+    {
+        m_PlayerController.Dash();
+    }
+
     public void SetMovable()
     {
         m_PlayerController.SetMovable();

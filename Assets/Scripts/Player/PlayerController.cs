@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public float DashDistance = 0.8f; // Variable pour tweaker la distance du Dash.
     public float DashVelocity = 1;
     public float dashRate = 1f;
+    public bool isDodging = false;
 
     [Header("Attack Properties")]
     [Range(0, 1)]
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetButtonDown("Dash"))
                 {
-                    Dash();
+                    animPlayer.SetTrigger("isDodging");
                     m_NextDashTime = Time.time + 1f / dashRate;
                 }
             }
@@ -134,11 +135,14 @@ public class PlayerController : MonoBehaviour
 
     public void Dash()
     {
-        animPlayer.SetTrigger("isDodging");
+        // animPlayer.SetTrigger("isDodging");
+        isMovable = true;
+
+        isDodging = true;
 
         m_SpeedSave = moveSpeed;
 
-        moveSpeed = moveSpeed * 2f;
+        moveSpeed = moveSpeed * 2.5f;
 
         // ↓ On dash dans la diréction dans laquel on se mouvoie déja.
         // m_Controller.Move(m_MoveDirection * DashDistance);
@@ -147,6 +151,7 @@ public class PlayerController : MonoBehaviour
     public void ResSpeed()
     {
         moveSpeed = m_SpeedSave;
+        isDodging = false;
     }
 
     public void MouseTarget()
