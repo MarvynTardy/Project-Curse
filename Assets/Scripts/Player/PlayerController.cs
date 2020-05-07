@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     [Range(0, 1)]
     public float attackBounce = 0.1f;
 
-    [Header("Référence")]
+    [Header("Références")]
     public Animator animPlayer;
     public Transform pivot;
     public GameObject playerModel;
@@ -67,11 +67,11 @@ public class PlayerController : MonoBehaviour
             {
                 Dash();
             }
-            else if (Input.GetButtonUp("Dash"))
+            /*else if (Input.GetButtonUp("Dash"))
             {
                 // ↓ Si on ne dash pas, c'est qu'on ne bouge pas, donc le movedirection est a 0.
                 m_MoveDirection = Vector3.zero;
-            }
+            }*/
         }
 
         // Gestion de la chute en l'air
@@ -84,14 +84,18 @@ public class PlayerController : MonoBehaviour
         animPlayer.SetFloat("Speed", (Mathf.Abs(Input.GetAxisRaw("Vertical")) + Mathf.Abs(Input.GetAxisRaw("Horizontal"))));
         if (Input.GetButtonDown("Attack"))
         {
-            animPlayer.SetTrigger("isAttack");
+            // animPlayer.SetTrigger("isAttack");
             m_IsMovable = false;
             Invoke("SetMovable", attackCooldown);
-            m_Controller.Move(m_MoveDirection * attackBounce);
+            // m_Controller.Move(m_MoveDirection * attackBounce);
         }
         if (Input.GetMouseButtonDown(1))
         {
             animPlayer.SetTrigger("isFiring");
+        }
+        if (Input.GetButtonDown("Dash"))
+        {
+            animPlayer.SetTrigger("isDodging");
         }
     }
 
@@ -123,8 +127,11 @@ public class PlayerController : MonoBehaviour
 
     public void Dash()
     {
+        float m_SpeedSave = moveSpeed;
+
+        moveSpeed = moveSpeed * 1.5f;
         // ↓ On dash dans la diréction dans laquel on se mouvoie déja.
-        m_Controller.Move(m_MoveDirection * DashDistance);
+        // m_Controller.Move(m_MoveDirection * DashDistance);
     }
 
     public void MouseTarget()

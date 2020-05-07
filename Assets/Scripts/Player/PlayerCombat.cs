@@ -4,22 +4,35 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    
+    [Header("Références")]
+    public Animator animPlayer;
     public Transform attackPoint;
     public LayerMask enemyLayer;
+    public ShootController shootController;
+
+    [Header("Attack Properties")]
     public float attackRange = 2;
     public int attackDamage = 1;
-    public ShootController shootController;
+    public float attackRate = 2f;
+    
+    private float m_NextAttackTime = 0f;
    
     void Update()
     {
-        if (Input.GetButtonDown("Attack"))
+        if (Time.time >= m_NextAttackTime)
         {
-            Attack();
+            if (Input.GetButtonDown("Attack"))
+            {
+                Attack();
+                m_NextAttackTime = Time.time + 1f / attackRate;
+            }
         }
     }
+
     void Attack()
     {
+        animPlayer.SetTrigger("isAttack");
+
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 
         foreach(Collider enemy in hitEnemies)
@@ -40,6 +53,5 @@ public class PlayerCombat : MonoBehaviour
     public void TestEvent(float val)
     {
         Debug.Log("cokfc" + val);
-
     }
 }
