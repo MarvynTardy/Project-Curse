@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerHUD : MonoBehaviour
 {
-    //public Slider healthSlider;
-
+    //Slider de shoot
     public Slider shootSlider;
 
+    //public Slider healthSlider;
     //public Slider[] shootsSliders;
 
     public void Start()
