@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: cf7056517269026469f72521fbaa0df7
+guid: 842eee53566c0254292165c2bb5eba97
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Hero_Attack
+    second: Hero_Dodging
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Hero_Attack
+      name: Hero_Dodging
       takeName: Take 001
       internalID: 0
-      firstFrame: 10
-      lastFrame: 66
+      firstFrame: 5
+      lastFrame: 31
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -58,11 +58,18 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.41525424
+        functionName: ResSpeed
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 10
+      additiveReferencePoseFrame: 5
     isReadable: 0
   meshes:
     lODScreenPercentages: []

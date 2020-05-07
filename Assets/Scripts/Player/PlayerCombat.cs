@@ -8,7 +8,7 @@ public class PlayerCombat : MonoBehaviour
     public Animator animPlayer;
     public Transform attackPoint;
     public LayerMask enemyLayer;
-    public ShootController shootController;
+    private PlayerController m_PlayerController;
 
     [Header("Attack Properties")]
     public float attackRange = 2;
@@ -16,7 +16,12 @@ public class PlayerCombat : MonoBehaviour
     public float attackRate = 2f;
     
     private float m_NextAttackTime = 0f;
-   
+
+    void Start()
+    {
+        m_PlayerController = GetComponentInParent<PlayerController>();
+    }
+
     void Update()
     {
         if (Time.time >= m_NextAttackTime)
@@ -31,7 +36,13 @@ public class PlayerCombat : MonoBehaviour
 
     void Attack()
     {
+        m_PlayerController.isMovable = false;
+        m_PlayerController.moveDirection = Vector3.zero;
+
+        m_PlayerController.playerModel.transform.LookAt(new Vector3(m_PlayerController.pointToLook.x, m_PlayerController.playerModel.transform.position.y, m_PlayerController.pointToLook.z));
+
         animPlayer.SetTrigger("isAttack");
+
 
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 

@@ -16,17 +16,24 @@ public class PlayerController : MonoBehaviour
     public float gravityScale = 1; // Variable qui gère l'attraction terrestre de notre character
     [Range(1, 20)]
     public float rotateSpeed = 10;
+    [HideInInspector]
+    public bool isMovable = true;
+    [HideInInspector]
+    public Vector3 moveDirection;
+    public Vector3 pointToLook;
 
     [Header("Dash Properties")]
     [Range(0.1f, 10.0f)]
     public float DashDistance = 0.8f; // Variable pour tweaker la distance du Dash.
     public float DashVelocity = 1;
+    public float dashRate = 1f;
 
     [Header("Attack Properties")]
     [Range(0, 1)]
     public float attackCooldown = 0.65f;
     [Range(0, 1)]
     public float attackBounce = 0.1f;
+
 
     [Header("Références")]
     public Animator animPlayer;
@@ -36,9 +43,9 @@ public class PlayerController : MonoBehaviour
     public GameObject cursor;
 
     private CharacterController m_Controller;
-    private Vector3 m_MoveDirection;
-    private bool m_IsMovable = true;
     private Camera m_MainCamera;
+    private float m_SpeedSave;
+    private float m_NextDashTime = 0f;
 
     void Start()
     {
@@ -51,7 +58,7 @@ public class PlayerController : MonoBehaviour
     {
         MouseTarget();
 
-        if (m_IsMovable)
+        if (isMovable)
         {
             Move();
         }
@@ -63,9 +70,13 @@ public class PlayerController : MonoBehaviour
                 Jump();
             }
 
-            if (Input.GetButtonDown("Dash"))
+            if (Time.time >= m_NextDashTime)
             {
-                Dash();
+                if (Input.GetButtonDown("Dash"))
+                {
+                    Dash();
+                    m_NextDashTime = Time.time + 1f / dashRate;
+                }
             }
             /*else if (Input.GetButtonUp("Dash"))
             {
@@ -75,9 +86,9 @@ public class PlayerController : MonoBehaviour
         }
 
         // Gestion de la chute en l'air
-        m_MoveDirection.y = m_MoveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         // On applique le vector de direction à la fonction préfaite du CC move qui gère sa direction et vélocité
-        m_Controller.Move(m_MoveDirection * Time.deltaTime);
+        m_Controller.Move(moveDirection * Time.deltaTime);
 
         // Gestion des conditions de l'animator du player
         animPlayer.SetBool("isGrounded", m_Controller.isGrounded);
@@ -85,53 +96,57 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Attack"))
         {
             // animPlayer.SetTrigger("isAttack");
-            m_IsMovable = false;
-            Invoke("SetMovable", attackCooldown);
+            isMovable = false;
+            // Invoke("SetMovable", attackCooldown);
             // m_Controller.Move(m_MoveDirection * attackBounce);
         }
         if (Input.GetMouseButtonDown(1))
         {
             animPlayer.SetTrigger("isFiring");
         }
-        if (Input.GetButtonDown("Dash"))
-        {
-            animPlayer.SetTrigger("isDodging");
-        }
     }
 
     public void Move()
     {
         // ↓ Permet de stocker la valeur du déplacement en y
-        float yStore = m_MoveDirection.y;
+        float yStore = moveDirection.y;
         
         // ↓ Permet de gérer la direction du personnage relativement à sa position dans l'espace
-        m_MoveDirection = (transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"));
+        moveDirection = (transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"));
 
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
-            Quaternion newRotation = Quaternion.LookRotation(new Vector3(m_MoveDirection.x, 0f, m_MoveDirection.z));
+            Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
             playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
         }
         // ↓ Permet de gérer le déplacement en diagonal
-        m_MoveDirection = m_MoveDirection.normalized * moveSpeed;
+        moveDirection = moveDirection.normalized * moveSpeed;
         
         // ↓ Restaure la valeur de y avant qu'il soit Normalized pour pas que le normalized n'affecte l'axe y
-        m_MoveDirection.y = yStore;
+        moveDirection.y = yStore;
     }
 
     public void Jump()
     {
-        m_MoveDirection.y = jumpForce;
+        moveDirection.y = jumpForce;
     }
 
     public void Dash()
     {
-        float m_SpeedSave = moveSpeed;
+        animPlayer.SetTrigger("isDodging");
 
-        moveSpeed = moveSpeed * 1.5f;
+        m_SpeedSave = moveSpeed;
+
+        moveSpeed = moveSpeed * 2f;
+
         // ↓ On dash dans la diréction dans laquel on se mouvoie déja.
         // m_Controller.Move(m_MoveDirection * DashDistance);
+    }
+
+    public void ResSpeed()
+    {
+        moveSpeed = m_SpeedSave;
     }
 
     public void MouseTarget()
@@ -143,12 +158,12 @@ public class PlayerController : MonoBehaviour
 
         if (m_GroundPlane.Raycast(m_CameraRay, out m_RayLength))
         {
-            Vector3 m_PointToLook = m_CameraRay.GetPoint(m_RayLength);
-            Debug.DrawLine(m_CameraRay.origin, m_PointToLook, Color.blue);
-            DisplayFBDrop(new Vector3(m_PointToLook.x, 1f, m_PointToLook.z));
+            pointToLook = m_CameraRay.GetPoint(m_RayLength);
+            Debug.DrawLine(m_CameraRay.origin, pointToLook, Color.blue);
+            DisplayFBDrop(new Vector3(pointToLook.x, 1f, pointToLook.z));
             if (Input.GetButtonDown("Attack") || Input.GetMouseButtonDown(1))
             {
-                playerModel.transform.LookAt(new Vector3(m_PointToLook.x, playerModel.transform.position.y, m_PointToLook.z));
+                // playerModel.transform.LookAt(new Vector3(pointToLook.x, playerModel.transform.position.y, pointToLook.z));
                 if (Input.GetMouseButtonDown(1))
                 {
                     shootAttack.isFiring = true;
@@ -170,7 +185,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetMovable()
     {
-        m_IsMovable = true;
+        isMovable = true;
     }
     private void DisplayFBDrop(Vector3 pos)
     {

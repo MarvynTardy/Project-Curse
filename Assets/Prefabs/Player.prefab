@@ -36,10 +36,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
-  shootController: {fileID: 146779960278554855}
   attackRange: 2
   attackDamage: 2
-  attackRate: 2
+  attackRate: 1
 --- !u!1 &2724376391039697189
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1027505ed51df8f4db025d942d93c48d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
   maxHealth: 100
 --- !u!23 &6911099588973962671
 MeshRenderer:
