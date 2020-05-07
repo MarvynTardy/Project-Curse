@@ -85,6 +85,7 @@ MonoBehaviour:
   bulletSpeed: 50
   timeBetweenShots: 30
   firePoint: {fileID: 8905879182939600005}
+  numberOfShots: 5
 --- !u!1 &2724376391039697189
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +304,7 @@ GameObject:
   - component: {fileID: 6911099588973962670}
   - component: {fileID: 6911099588973962669}
   - component: {fileID: 6911099588973962674}
+  - component: {fileID: 3839738874892779921}
   - component: {fileID: 6911099588973962671}
   m_Layer: 0
   m_Name: Player
@@ -347,6 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165fe318cc797a044af399842e5ee4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
   moveSpeed: 8
   jumpForce: 8
   gravityScale: 1
@@ -378,6 +381,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3839738874892779921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6911099588973962675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1027505ed51df8f4db025d942d93c48d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
+  maxHealth: 100
 --- !u!23 &6911099588973962671
 MeshRenderer:
   m_ObjectHideFlags: 0
