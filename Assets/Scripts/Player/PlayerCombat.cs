@@ -14,6 +14,7 @@ public class PlayerCombat : MonoBehaviour
     public float attackRange = 2;
     public int attackDamage = 1;
     public float attackRate = 2f;
+    public float attackBounce = 2;
     
     private float m_NextAttackTime = 0f;
 
@@ -22,7 +23,7 @@ public class PlayerCombat : MonoBehaviour
         m_PlayerController = GetComponentInParent<PlayerController>();
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (Time.time >= m_NextAttackTime)
         {
@@ -40,6 +41,8 @@ public class PlayerCombat : MonoBehaviour
         m_PlayerController.moveDirection = Vector3.zero;
 
         m_PlayerController.playerModel.transform.LookAt(new Vector3(m_PlayerController.pointToLook.x, m_PlayerController.playerModel.transform.position.y, m_PlayerController.pointToLook.z));
+
+        m_PlayerController.moveDirection = transform.forward * attackBounce;
 
         animPlayer.SetTrigger("isAttack");
 

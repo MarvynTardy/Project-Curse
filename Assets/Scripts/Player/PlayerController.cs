@@ -23,18 +23,9 @@ public class PlayerController : MonoBehaviour
     public Vector3 pointToLook;
 
     [Header("Dash Properties")]
-    [Range(0.1f, 10.0f)]
-    public float DashDistance = 0.8f; // Variable pour tweaker la distance du Dash.
-    public float DashVelocity = 1;
+    [Range(0.1f, 2f)]
     public float dashRate = 1f;
     public bool isDodging = false;
-
-    [Header("Attack Properties")]
-    [Range(0, 1)]
-    public float attackCooldown = 0.65f;
-    [Range(0, 1)]
-    public float attackBounce = 0.1f;
-
 
     [Header("Références")]
     public Animator animPlayer;
@@ -79,11 +70,6 @@ public class PlayerController : MonoBehaviour
                     m_NextDashTime = Time.time + 1f / dashRate;
                 }
             }
-            /*else if (Input.GetButtonUp("Dash"))
-            {
-                // ↓ Si on ne dash pas, c'est qu'on ne bouge pas, donc le movedirection est a 0.
-                m_MoveDirection = Vector3.zero;
-            }*/
         }
 
         // Gestion de la chute en l'air
@@ -94,13 +80,7 @@ public class PlayerController : MonoBehaviour
         // Gestion des conditions de l'animator du player
         animPlayer.SetBool("isGrounded", m_Controller.isGrounded);
         animPlayer.SetFloat("Speed", (Mathf.Abs(Input.GetAxisRaw("Vertical")) + Mathf.Abs(Input.GetAxisRaw("Horizontal"))));
-        if (Input.GetButtonDown("Attack"))
-        {
-            // animPlayer.SetTrigger("isAttack");
-            isMovable = false;
-            // Invoke("SetMovable", attackCooldown);
-            // m_Controller.Move(m_MoveDirection * attackBounce);
-        }
+        
         if (Input.GetMouseButtonDown(1))
         {
             animPlayer.SetTrigger("isFiring");
@@ -135,17 +115,13 @@ public class PlayerController : MonoBehaviour
 
     public void Dash()
     {
-        // animPlayer.SetTrigger("isDodging");
         isMovable = true;
 
         isDodging = true;
 
         m_SpeedSave = moveSpeed;
 
-        moveSpeed = moveSpeed * 2.5f;
-
-        // ↓ On dash dans la diréction dans laquel on se mouvoie déja.
-        // m_Controller.Move(m_MoveDirection * DashDistance);
+        moveSpeed *= 2.5f;
     }
 
     public void ResSpeed()

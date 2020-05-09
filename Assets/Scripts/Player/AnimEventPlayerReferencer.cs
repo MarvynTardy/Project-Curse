@@ -5,6 +5,8 @@ using UnityEngine;
 public class AnimEventPlayerReferencer : MonoBehaviour
 {
     private PlayerController m_PlayerController;
+    public ParticleSystem dust;
+    public TrailRenderer swordTrail;
 
     void Start()
     {
@@ -31,4 +33,13 @@ public class AnimEventPlayerReferencer : MonoBehaviour
         m_PlayerController.ResSpeed();
     }
 
+    public void DustDisplay()
+    {
+        dust.Play();
+    }
+
+    public void SwordTrailDisplay()
+    {
+        dust.Play();
+    }
 }
