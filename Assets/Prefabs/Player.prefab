@@ -39,6 +39,7 @@ MonoBehaviour:
   attackRange: 2
   attackDamage: 2
   attackRate: 1
+  attackBounce: 2
 --- !u!114 &2384923673544788828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,9 +543,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.2
-      minScalar: 1
+      minMaxState: 3
+      scalar: 0.3
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -595,7 +596,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -648,7 +649,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -4968,7 +4969,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7f2a60453287a50499d0f0005991c9ac, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -5056,11 +5057,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718a3a179035c9b43ba80b453b0bb0d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFiring: 0
+  animPlayer: {fileID: 0}
+  firePoint: {fileID: 3589702807552013863}
   bullet: {fileID: 6090288033085508619, guid: 85a88a0cd3cb4614c9bf81cf8ccbd925, type: 3}
+  isFiring: 0
   bulletSpeed: 50
   timeBetweenShots: 30
-  firePoint: {fileID: 3589702807552013863}
 --- !u!1 &6911099588973962675
 GameObject:
   m_ObjectHideFlags: 0
@@ -5126,12 +5128,8 @@ MonoBehaviour:
   isMovable: 1
   moveDirection: {x: 0, y: 0, z: 0}
   pointToLook: {x: 0, y: 0, z: 0}
-  DashDistance: 0.5
-  DashVelocity: 1
   dashRate: 1
   isDodging: 0
-  attackCooldown: 0.65
-  attackBounce: 0.1
   animPlayer: {fileID: 3907607241358529243}
   pivot: {fileID: 0}
   playerModel: {fileID: 72804550605777656}

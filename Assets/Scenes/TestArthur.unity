@@ -2936,6 +2936,16 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 7036382518001638972, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036382518001638972, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8905879182939600005, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
       propertyPath: m_LocalPosition.y

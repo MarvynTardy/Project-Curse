@@ -5,28 +5,27 @@ using UnityEngine.UI;
 
 public class ShootController : MonoBehaviour
 {
-
-    public bool isFiring;
-
-    public BulletController bullet;
-    public float bulletSpeed = 1;
-
-    public float timeBetweenShots = 3;
-    private float m_ShotCounter;
-
+    [Header("Références")]
+    public Animator animPlayer;
     public Transform firePoint;
-
-    //View shoot controller
+    public BulletController bullet;
+    private PlayerController m_PlayerController;
     private PlayerHUD m_PlayerHUD;
 
+    [Header("Shoot Properties")]
+    public bool isFiring;
+    public float bulletSpeed = 1;
+    public float timeBetweenShots = 3;
+       
     void Start()
     {
-        m_PlayerHUD = FindObjectOfType<PlayerHUD>(); 
+        m_PlayerHUD = FindObjectOfType<PlayerHUD>();
+        m_PlayerController = GetComponentInParent<PlayerController>();
     }
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetButtonDown("Shoot") && !m_PlayerController.isDodging)
         {
             isFiring = true;
             Shoot();
@@ -38,7 +37,10 @@ public class ShootController : MonoBehaviour
         if (isFiring)
         {
             isFiring = false;
-            m_ShotCounter = timeBetweenShots;
+            m_PlayerController.isMovable = false;
+            m_PlayerController.moveDirection = Vector3.zero;
+            m_PlayerController.playerModel.transform.LookAt(new Vector3(m_PlayerController.pointToLook.x, m_PlayerController.playerModel.transform.position.y, m_PlayerController.pointToLook.z));
+
             BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
             newBullet.speed = bulletSpeed;
             if (m_PlayerHUD != null)
