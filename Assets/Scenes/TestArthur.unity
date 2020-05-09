@@ -2851,6 +2851,21 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1992430809}
+    - target: {fileID: 1249853774699075918, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249853774699075918, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249853774699075918, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2724376391039697189, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
       propertyPath: m_Name

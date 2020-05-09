@@ -6,7 +6,8 @@ public class AnimEventPlayerReferencer : MonoBehaviour
 {
     private PlayerController m_PlayerController;
     public ParticleSystem dust;
-    public TrailRenderer swordTrail;
+    public ParticleSystem fireLoad;
+    public ParticleSystem fireFlash;
 
     void Start()
     {
@@ -37,9 +38,11 @@ public class AnimEventPlayerReferencer : MonoBehaviour
     {
         dust.Play();
     }
-
-    public void SwordTrailDisplay()
+    public void ShootDisplay()
     {
-        dust.Play();
+        fireLoad.Clear();
+        fireFlash.Clear();
+        fireLoad.Play();
+        fireFlash.Play();
     }
 }

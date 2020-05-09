@@ -15,7 +15,6 @@ public class ShootController : MonoBehaviour
     [Header("Shoot Properties")]
     public bool isFiring;
     public float bulletSpeed = 1;
-    public float timeBetweenShots = 3;
        
     void Start()
     {
@@ -39,6 +38,9 @@ public class ShootController : MonoBehaviour
             isFiring = false;
             m_PlayerController.isMovable = false;
             m_PlayerController.moveDirection = Vector3.zero;
+
+            animPlayer.SetTrigger("isFiring");
+
             m_PlayerController.playerModel.transform.LookAt(new Vector3(m_PlayerController.pointToLook.x, m_PlayerController.playerModel.transform.position.y, m_PlayerController.pointToLook.z));
 
             BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);

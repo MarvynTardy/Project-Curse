@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 pointToLook;
 
     [Header("Dash Properties")]
+    [Range(0.1f, 4f)]
+    public float dashSpeed = 2f;
     [Range(0.1f, 2f)]
     public float dashRate = 1f;
     public bool isDodging = false;
@@ -80,11 +82,6 @@ public class PlayerController : MonoBehaviour
         // Gestion des conditions de l'animator du player
         animPlayer.SetBool("isGrounded", m_Controller.isGrounded);
         animPlayer.SetFloat("Speed", (Mathf.Abs(Input.GetAxisRaw("Vertical")) + Mathf.Abs(Input.GetAxisRaw("Horizontal"))));
-        
-        if (Input.GetMouseButtonDown(1))
-        {
-            animPlayer.SetTrigger("isFiring");
-        }
     }
 
     public void Move()
@@ -121,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
         m_SpeedSave = moveSpeed;
 
-        moveSpeed *= 2.5f;
+        moveSpeed *= dashSpeed;
     }
 
     public void ResSpeed()
