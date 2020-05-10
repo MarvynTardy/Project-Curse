@@ -11,12 +11,17 @@ public class PlayerCombat : MonoBehaviour
     private PlayerController m_PlayerController;
 
     [Header("Attack Properties")]
+    [Range(0, 5)]
     public float attackRange = 2;
+    [Range(0, 5)]
     public int attackDamage = 1;
+    [Range(1, 5)]
     public float attackRate = 2f;
+    [Range(0, 5)]
     public float attackBounce = 1;
     
     private float m_NextAttackTime = 0f;
+    private bool attackRevert = false;
 
     void Start()
     {
@@ -46,26 +51,30 @@ public class PlayerCombat : MonoBehaviour
 
         animPlayer.SetTrigger("isAttack");
 
-
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 
         foreach(Collider enemy in hitEnemies)
         {
             enemy.GetComponentInParent<HealthComponent>().TakeDamage(attackDamage);
-           
+        }
+
+        animPlayer.SetBool("attackRevert", attackRevert);
+
+        if (attackRevert)
+        {
+            attackRevert = false;
+        }
+        else
+        {
+            attackRevert = true;
         }
     }
+
     private void OnDrawGizmos()
     {
         if (attackPoint == null)
             return;
 
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        
-    }
-
-    public void TestEvent(float val)
-    {
-        Debug.Log("cokfc" + val);
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);        
     }
 }
