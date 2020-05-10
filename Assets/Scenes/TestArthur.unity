@@ -517,6 +517,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248348674}
   m_CullTransparentMesh: 0
+--- !u!114 &349103554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 146779960278554855, guid: 0473017190771e94880b0e52b1d4613c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6911099589462832221}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718a3a179035c9b43ba80b453b0bb0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &557965946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,9 +1456,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 5
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2298,6 +2310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootSlider: {fileID: 1166217626}
+  shootController: {fileID: 349103554}
 --- !u!114 &1783949815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2846,6 +2859,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 393997176436598706, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1126285597533117778, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
       propertyPath: healthSlider

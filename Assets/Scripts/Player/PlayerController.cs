@@ -123,6 +123,7 @@ public class PlayerController : MonoBehaviour
 
     public void ResSpeed()
     {
+        m_SpeedSave = 8; // ligne de débug a supprimé par la suite
         moveSpeed = m_SpeedSave;
         isDodging = false;
     }

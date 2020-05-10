@@ -8,19 +8,25 @@ public class PlayerHUD : MonoBehaviour
 {
     //Slider de shoot
     public Slider shootSlider;
-
+    public ShootController shootController;
     //public Slider healthSlider;
     //public Slider[] shootsSliders;
 
     public void Start()
     {
-        shootSlider.value = shootSlider.maxValue;
+        // shootSlider.value = shootSlider.maxValue;
+        shootSlider.value = shootController.stamina;
     }
 
-    public void UpdateShootView()
+    public void Update()
+    {
+        shootSlider.value = shootController.stamina;
+    }
+
+    /*public void UpdateShootView()
     {
         shootSlider.value -= 20;
-    }
+    }*/
 
 
 

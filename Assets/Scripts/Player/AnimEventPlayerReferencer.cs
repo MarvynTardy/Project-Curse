@@ -8,6 +8,8 @@ public class AnimEventPlayerReferencer : MonoBehaviour
     public ParticleSystem dust;
     public ParticleSystem fireLoad;
     public ParticleSystem fireFlash;
+    public ParticleSystem fireRing;
+
 
     void Start()
     {
@@ -41,8 +43,10 @@ public class AnimEventPlayerReferencer : MonoBehaviour
     public void ShootDisplay()
     {
         fireLoad.Clear();
-        fireFlash.Clear();
+        fireRing.Clear();
+        // fireFlash.Clear();
         fireLoad.Play();
         fireFlash.Play();
+        fireRing.Play();
     }
 }
