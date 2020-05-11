@@ -13,7 +13,7 @@ public class HealthComponent : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             TakeDamage(10);
         }
@@ -50,6 +50,7 @@ public class HealthComponent : MonoBehaviour
     void Die()
     {
         Debug.Log(this.gameObject + " is Dead");
+        Destroy(gameObject);
     }
 }
 
