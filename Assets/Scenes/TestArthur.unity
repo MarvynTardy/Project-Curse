@@ -903,7 +903,7 @@ Transform:
   - {fileID: 1074009523}
   - {fileID: 881446571}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1992430809 stripped
 MonoBehaviour:
@@ -938,6 +938,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player+Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5200949840253783101, guid: 044a4db9f0b77454da6d17a1eaa4b8f2,
+        type: 3}
+      propertyPath: VelocityModule.z.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5200949840253783101, guid: 044a4db9f0b77454da6d17a1eaa4b8f2,
+        type: 3}
+      propertyPath: VelocityModule.x.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5200949840253783101, guid: 044a4db9f0b77454da6d17a1eaa4b8f2,
+        type: 3}
+      propertyPath: VelocityModule.y.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5200949840253783101, guid: 044a4db9f0b77454da6d17a1eaa4b8f2,
+        type: 3}
+      propertyPath: VelocityModule.z.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5200949840253783101, guid: 044a4db9f0b77454da6d17a1eaa4b8f2,
+        type: 3}
+      propertyPath: VelocityModule.z.minScalar
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6034720080676107930, guid: 044a4db9f0b77454da6d17a1eaa4b8f2,
         type: 3}
@@ -977,7 +1002,7 @@ PrefabInstance:
     - target: {fileID: 6034720080676107930, guid: 044a4db9f0b77454da6d17a1eaa4b8f2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6034720080676107930, guid: 044a4db9f0b77454da6d17a1eaa4b8f2,
         type: 3}
@@ -1117,6 +1142,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7315615252974074382, guid: b1b7386231c9f56458c1c89929bf3c3c,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7315615253821197484, guid: b1b7386231c9f56458c1c89929bf3c3c,
         type: 3}
