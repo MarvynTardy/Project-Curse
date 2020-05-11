@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class Enemy : MonoBehaviour
 {
     // Animation
@@ -29,17 +30,24 @@ public class Enemy : MonoBehaviour
         if(distance <= detectionRange)
         {
             animMonster.SetBool("isRunning",true);
+            agent.isStopped = false;
             agent.SetDestination(playerTransform.position);
         }
         else
         {
             
+            agent.SetDestination(transform.position);
             animMonster.SetBool("isRunning", false);
-          
+            agent.isStopped = true;
+
         }
         if(distance <= attackRange)
         {
-            Attack();
+            animMonster.SetBool("isAttack",true);
+        }
+        else
+        {
+            animMonster.SetBool("isAttack", false);
         }
         
     }
@@ -52,7 +60,7 @@ public class Enemy : MonoBehaviour
     }
     void Attack()
     {
-        animMonster.SetTrigger("isAttack");
+        playerTransform.GetComponent<HealthComponent>().TakeDamage(20);
         
     }
 }
