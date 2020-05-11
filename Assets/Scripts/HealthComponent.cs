@@ -6,7 +6,11 @@ using UnityEngine.UI;
 
 public class HealthComponent : MonoBehaviour
 {
+
     public Slider healthSlider;
+
+
+    public Animator anim;
 
     public int maxHealth = 100;
     private int currenthealth;
@@ -33,8 +37,13 @@ public class HealthComponent : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currenthealth -= damage;
+
         healthSlider.value -= damage;
         
+
+        anim.SetTrigger("TakeDamage");
+
+
         if(currenthealth <= 0)
         {
             Die();
