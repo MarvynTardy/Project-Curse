@@ -6,14 +6,16 @@ using UnityEngine.UI;
 
 public class HealthComponent : MonoBehaviour
 {
-
+    [Header("Références")]
     public Slider healthSlider;
+    public ParticleSystem bloodParticle;
 
 
     public Animator anim;
 
     public int maxHealth = 100;
     private int currenthealth;
+
 
     private void Update()
     {
@@ -36,6 +38,11 @@ public class HealthComponent : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+        if (bloodParticle != null)
+        {
+            bloodParticle.Play();
+        }
+
         currenthealth -= damage;
 
         healthSlider.value -= damage;
