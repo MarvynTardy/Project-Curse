@@ -31,6 +31,12 @@ public class AnimEventPlayerReferencer : MonoBehaviour
         m_PlayerController.SetMovable();
     }
 
+    public void SetUnmovable()
+    {
+        m_PlayerController.moveDirection = Vector3.zero;
+        m_PlayerController.isMovable = false;
+    }
+
     public void ResSpeed()
     {
         m_PlayerController.ResSpeed();

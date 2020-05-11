@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 0}
+  bloodParticle: {fileID: 0}
   anim: {fileID: 2805020670402859134}
   maxHealth: 100
 --- !u!1001 &5118898611057797570

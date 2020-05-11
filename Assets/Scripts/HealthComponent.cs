@@ -9,12 +9,25 @@ public class HealthComponent : MonoBehaviour
     [Header("Références")]
     public Slider healthSlider;
     public ParticleSystem bloodParticle;
-
-
+    public ParticleSystem hitParticle;
     public Animator anim;
+    public Image redWarning;
 
+    [Header("Life Properties")]
     public int maxHealth = 100;
+    public float timeBreak = 0.2f;
     private int currenthealth;
+    public bool gettingHurt;
+    private float m_CurrentTimeBreak;
+
+    void Start()
+    {
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = healthSlider.maxValue;
+        currenthealth = maxHealth;
+
+        m_CurrentTimeBreak = timeBreak;
+    }
 
 
     private void Update()
@@ -28,19 +41,49 @@ public class HealthComponent : MonoBehaviour
         {
             Heal(10);
         }
+
+        if (gettingHurt)
+        {
+            m_CurrentTimeBreak -= 0.03f;
+            if (m_CurrentTimeBreak > 0)
+            {
+                Time.timeScale = 0;
+                redWarning.enabled = true;
+                redWarning.CrossFadeAlpha(0, 0.1f, true);
+            }
+            else if (m_CurrentTimeBreak <= 0)
+            {
+                Time.timeScale = 1;
+                redWarning.CrossFadeAlpha(0.5f, timeBreak, true);
+                redWarning.enabled = false;
+                gettingHurt = false;
+                m_CurrentTimeBreak = timeBreak;
+            }
+            
+        }
     }
 
-    void Start()
+    public void PauseTime()
     {
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = healthSlider.maxValue;
-        currenthealth = maxHealth;
+        Time.timeScale = 0;
     }
+
+    public void PlayTime()
+    {
+        Time.timeScale = 1;
+    }
+
     public void TakeDamage(int damage)
     {
         if (bloodParticle != null)
         {
             bloodParticle.Play();
+        }
+
+        if (hitParticle != null)
+        {
+            hitParticle.Clear();
+            hitParticle.Play();
         }
 
         currenthealth -= damage;
@@ -50,6 +93,7 @@ public class HealthComponent : MonoBehaviour
 
         anim.SetTrigger("TakeDamage");
 
+        gettingHurt = true;
 
         if(currenthealth <= 0)
         {
