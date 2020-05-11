@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
+    public Animator anim;
     public int maxHealth = 100;
     private int currenthealth;
 
@@ -14,6 +15,7 @@ public class HealthComponent : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currenthealth -= damage;
+        anim.SetTrigger("TakeDamage");
 
         if(currenthealth <= 0)
         {
