@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class HealthComponent : MonoBehaviour
+public class HealthComponentPlayer : MonoBehaviour
 {
     [Header("Références")]
     public Slider healthSlider;
     public ParticleSystem bloodParticle;
     public ParticleSystem hitParticle;
     public Animator anim;
+    public Image redWarning;
 
     [Header("Life Properties")]
     public int maxHealth = 100;
@@ -43,7 +43,22 @@ public class HealthComponent : MonoBehaviour
 
         if (gettingHurt)
         {
-            
+            m_CurrentTimeBreak -= 0.03f;
+            if (m_CurrentTimeBreak > 0)
+            {
+                Time.timeScale = 0;
+                redWarning.enabled = true;
+                redWarning.CrossFadeAlpha(0, 0.1f, true);
+            }
+            else if (m_CurrentTimeBreak <= 0)
+            {
+                Time.timeScale = 1;
+                redWarning.CrossFadeAlpha(0.5f, timeBreak, true);
+                redWarning.enabled = false;
+                gettingHurt = false;
+                m_CurrentTimeBreak = timeBreak;
+            }
+
         }
     }
 
@@ -73,13 +88,13 @@ public class HealthComponent : MonoBehaviour
         currenthealth -= damage;
 
         healthSlider.value -= damage;
-        
+
 
         anim.SetTrigger("TakeDamage");
 
         gettingHurt = true;
 
-        if(currenthealth <= 0)
+        if (currenthealth <= 0)
         {
             Die();
         }
@@ -97,5 +112,3 @@ public class HealthComponent : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
-

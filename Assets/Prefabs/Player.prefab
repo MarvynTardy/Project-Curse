@@ -15025,7 +15025,7 @@ ParticleSystem:
     startRotationX:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1.5707963
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -15184,7 +15184,7 @@ ParticleSystem:
     randomizeRotationDirection: 0
     maxNumParticles: 1000
     size3D: 0
-    rotation3D: 0
+    rotation3D: 1
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
@@ -15241,15 +15241,15 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 5
-    angle: 25
+    type: 4
+    angle: 64.28
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1.6, y: 0.25, z: 1}
+    m_Scale: {x: 0.25, y: 0.25, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -16177,7 +16177,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0
-      minScalar: 1
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -18311,7 +18311,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 0.1
     collidesWith:
       serializedVersion: 2
       m_Bits: 311
@@ -19323,7 +19323,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 0
+  m_RenderAlignment: 1
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 1
@@ -19434,7 +19434,7 @@ GameObject:
   - component: {fileID: 6911099588973962665}
   - component: {fileID: 6911099588973962670}
   - component: {fileID: 6911099588973962669}
-  - component: {fileID: 1126285597533117778}
+  - component: {fileID: 1963837129701296124}
   - component: {fileID: 6911099588973962674}
   - component: {fileID: 6911099588973962671}
   m_Layer: 9
@@ -19496,7 +19496,7 @@ MonoBehaviour:
   playerModel: {fileID: 72804550605777656}
   shootAttack: {fileID: 146779960278554855}
   cursor: {fileID: 2724376391039697189}
---- !u!114 &1126285597533117778
+--- !u!114 &1963837129701296124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19505,7 +19505,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6911099588973962675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1027505ed51df8f4db025d942d93c48d, type: 3}
+  m_Script: {fileID: 11500000, guid: a765c6bc3e3ade04a87f7f8deca0ca73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 0}
@@ -19514,7 +19514,7 @@ MonoBehaviour:
   anim: {fileID: 3907607241358529243}
   redWarning: {fileID: 0}
   maxHealth: 100
-  timeBreak: 0.2
+  timeBreak: 0.3
   gettingHurt: 0
 --- !u!143 &6911099588973962674
 CharacterController:
