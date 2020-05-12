@@ -49,6 +49,11 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1126285597533117778, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 6555920099044912785}
     - target: {fileID: 1249853774699075918, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -73,6 +78,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719992727690424461, guid: 0473017190771e94880b0e52b1d4613c,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6911099588973962665, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
@@ -272,6 +282,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5594122906929447065}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6555920099044912785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1682410834523696648, guid: 2b1cc1b9ef4cdda4aa116bdf5a425149,
+    type: 3}
+  m_PrefabInstance: {fileID: 5594122906929447065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ffdefafdc0a6044ba35076765cee55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &614169959295604700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4983137845416826693, guid: 2b1cc1b9ef4cdda4aa116bdf5a425149,

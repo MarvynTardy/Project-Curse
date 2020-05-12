@@ -166,6 +166,7 @@ public class PlayerController : MonoBehaviour
     {
         isMovable = true;
     }
+
     private void DisplayFBDrop(Vector3 pos)
     {
         cursor.SetActive(true);
