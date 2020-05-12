@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: c5787c2e57a4c7844843e7d65d892084
+guid: 4650441e945c17f49a3271f9a690f145
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: TakeDamage
+    second: AttackEnemyDasher
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: TakeDamage
+      name: AttackEnemyDasher
       takeName: Take 001
       internalID: 0
-      firstFrame: 144
-      lastFrame: 155
+      firstFrame: 80
+      lastFrame: 130
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
