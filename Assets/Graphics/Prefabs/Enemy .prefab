@@ -99,7 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animMonster: {fileID: 2805020670402859134}
-  playerTransform: {fileID: 0}
+  player: {fileID: 6911099588973962675, guid: 0473017190771e94880b0e52b1d4613c, type: 3}
+  playerTransform: {fileID: 6911099588973962665, guid: 0473017190771e94880b0e52b1d4613c,
+    type: 3}
   detectionRange: 10
   attackRange: 2
 --- !u!114 &2016121011358210007
