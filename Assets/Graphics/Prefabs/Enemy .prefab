@@ -150,9 +150,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -245,6 +245,7 @@ MonoBehaviour:
   maxHealth: 100
   timeBreak: 0.2
   gettingHurt: 0
+  characterRenderer: {fileID: 0}
 --- !u!1 &5278131066215612113
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +258,7 @@ GameObject:
   - component: {fileID: 3270500081902014388}
   - component: {fileID: 5271641719309283551}
   - component: {fileID: 3056727740165922105}
-  - component: {fileID: 4294517496363873932}
+  - component: {fileID: 3706325758109608371}
   m_Layer: 5
   m_Name: EnemyHUD
   m_TagString: Untagged
@@ -345,7 +346,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4294517496363873932
+--- !u!114 &3706325758109608371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -426,7 +427,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.5
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 3
   m_UseSpriteMesh: 0

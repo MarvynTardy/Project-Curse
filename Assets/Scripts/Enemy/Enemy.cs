@@ -50,10 +50,12 @@ public class Enemy : MonoBehaviour
         if(distance <= attackRange)
         {
             animMonster.SetBool("isAttack",true);
+            agent.isStopped = true;
         }
         else
         {
             animMonster.SetBool("isAttack", false);
+            agent.isStopped = false;
         }
         
     }
