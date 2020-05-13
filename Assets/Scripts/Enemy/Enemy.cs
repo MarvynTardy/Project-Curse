@@ -50,10 +50,12 @@ public class Enemy : MonoBehaviour
         if(distance <= attackRange)
         {
             animMonster.SetBool("isAttack",true);
+            agent.isStopped = true;
         }
         else
         {
             animMonster.SetBool("isAttack", false);
+            agent.isStopped = false;
         }
         
     }
@@ -66,7 +68,7 @@ public class Enemy : MonoBehaviour
     }
     void Attack()
     {
-        target.GetComponent<HealthComponent>().TakeDamage(20);
+        target.GetComponent<HealthComponentPlayer>().TakeDamage(20);
         
     }
 }

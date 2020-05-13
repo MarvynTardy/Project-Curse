@@ -11,6 +11,12 @@ public class HealthComponent : MonoBehaviour
     public ParticleSystem bloodParticle;
     public ParticleSystem hitParticle;
     public Animator anim;
+    Renderer characterRenderer;
+    Material material1;
+    Material material2;
+
+    [Header("Feedback Properties")]
+    float blinkDuration = 2.0f;
 
     [Header("Life Properties")]
     public int maxHealth = 100;
@@ -18,14 +24,16 @@ public class HealthComponent : MonoBehaviour
     private int currenthealth;
     public bool gettingHurt;
     private float m_CurrentTimeBreak;
+    
 
     void Start()
     {
         healthSlider.maxValue = maxHealth;
-        healthSlider.value = healthSlider.maxValue;
+        healthSlider.value = healthSlider.maxValue / 2 ;
         currenthealth = maxHealth;
 
         m_CurrentTimeBreak = timeBreak;
+        characterRenderer = GetComponentInChildren<Renderer>();
     }
 
 
@@ -43,6 +51,7 @@ public class HealthComponent : MonoBehaviour
 
         if (gettingHurt)
         {
+            characterRenderer.material.color = Color.Lerp(Color.white, characterRenderer.material.color, Mathf.Abs(Mathf.Sin(Time.time * 100)));
             
         }
     }

@@ -388,8 +388,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 0}
+  bloodParticle: {fileID: 0}
+  hitParticle: {fileID: 0}
   anim: {fileID: 0}
   maxHealth: 100
+  timeBreak: 0.2
+  gettingHurt: 0
+  characterRenderer: {fileID: 0}
 --- !u!114 &591663380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,10 +456,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 323823680682416194, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 323823680682416194, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: m_Value
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 693949387323530415, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: Cam
+      value: 
+      objectReference: {fileID: 623897768}
+    - target: {fileID: 2016121011358210005, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: attackRange
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2443111516840969307, guid: ae0b62f5ff9e4274488336eed2af43cc,
         type: 3}
       propertyPath: m_Name
       value: 'Enemy '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294517496363873932, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: Cam
+      value: 
+      objectReference: {fileID: 376956284}
+    - target: {fileID: 6758323629401644347, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758323629401644347, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8234359075954161385, guid: ae0b62f5ff9e4274488336eed2af43cc,
         type: 3}
@@ -511,8 +551,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8863355591078922349, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae0b62f5ff9e4274488336eed2af43cc, type: 3}
+--- !u!4 &623897768 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 514589902606067638, guid: 2b1cc1b9ef4cdda4aa116bdf5a425149,
+    type: 3}
+  m_PrefabInstance: {fileID: 514589901935724660}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &719358643
 GameObject:
   m_ObjectHideFlags: 0
