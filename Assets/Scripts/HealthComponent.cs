@@ -12,8 +12,8 @@ public class HealthComponent : MonoBehaviour
     public ParticleSystem hitParticle;
     public Animator anim;
     Renderer characterRenderer;
-    Material material1;
-    Material material2;
+    public Material originalMaterial;
+    public Material emissiveMaterial;
 
     [Header("Feedback Properties")]
     float blinkDuration = 2.0f;
@@ -34,6 +34,8 @@ public class HealthComponent : MonoBehaviour
 
         m_CurrentTimeBreak = timeBreak;
         characterRenderer = GetComponentInChildren<Renderer>();
+        originalMaterial = GetComponentInChildren<Material>();
+        emissiveMaterial = Resources.Load("Assets/Graphics/Materials/EmissiveWhite", typeof(Material)) as Material;
     }
 
 
