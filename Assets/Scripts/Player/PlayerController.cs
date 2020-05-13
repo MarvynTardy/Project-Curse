@@ -118,7 +118,8 @@ public class PlayerController : MonoBehaviour
 
         m_SpeedSave = moveSpeed;
 
-        moveSpeed *= dashSpeed;
+        // moveSpeed *= dashSpeed;
+        moveSpeed = 16;
     }
 
     public void ResSpeed()

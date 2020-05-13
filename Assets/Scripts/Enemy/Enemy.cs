@@ -12,11 +12,12 @@ public class Enemy : MonoBehaviour
     NavMeshAgent agent;
    
     Transform target;
-    
-    
+
+    public float distance;
     public float detectionRange = 10f;
     // Variables Attack
     public float attackRange;
+    public float hitRange = 2;
     public bool IsCharge = false;
     void Start()
     {
@@ -31,8 +32,12 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         // On créer une variable référence "distance" qui correspond a la distance entre le player et le monstre
-        float distance = Vector3.Distance(target.position, transform.position);
+        distance = Vector3.Distance(target.position, transform.position);
+
         
+        
+        
+
         // Condition de déplacement et d'attaque
         if(distance <= detectionRange)
         {
@@ -57,7 +62,12 @@ public class Enemy : MonoBehaviour
             IsUnMoveable();
             IsCharge = true;
             animMonster.SetBool("isCharge",true);
-           
+            
+            if (IsCharge)
+            {
+                transform.LookAt(new Vector3 (target.transform.position.x, transform.position.y, target.transform.position.z));
+            }
+
             
         }
         else
@@ -75,10 +85,19 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectionRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, hitRange);
     }
     void Attack()
     {
-        target.GetComponent<HealthComponentPlayer>().TakeDamage(20);
+        
+
+        if (distance <= hitRange)
+        {
+            target.GetComponent<HealthComponentPlayer>().TakeDamage(20);
+
+        }
+        agent.SetDestination(target.position);
         
         
     }
