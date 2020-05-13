@@ -394,7 +394,6 @@ MonoBehaviour:
   maxHealth: 100
   timeBreak: 0.2
   gettingHurt: 0
-  characterRenderer: {fileID: 0}
 --- !u!114 &591663380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,6 +474,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackRange
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016121011358210005, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: detectionRange
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2443111516840969307, guid: ae0b62f5ff9e4274488336eed2af43cc,
         type: 3}

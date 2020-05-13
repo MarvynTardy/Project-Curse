@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     public float detectionRange = 10f;
     // Variables Attack
     public float attackRange;
+    public bool IsCharge = false;
     void Start()
     {
         //on Recup le Nav Mesh
@@ -35,27 +36,36 @@ public class Enemy : MonoBehaviour
         // Condition de déplacement et d'attaque
         if(distance <= detectionRange)
         {
-            animMonster.SetBool("isRunning",true);
-            agent.isStopped = false;
-            agent.SetDestination(target.position);
+            if(IsCharge == false)
+            {
+                animMonster.SetBool("isRunning", true);
+                IsMoveable();
+                agent.SetDestination(target.position);
+            }
+            
         }
         else
         {
             
             agent.SetDestination(transform.position);
             animMonster.SetBool("isRunning", false);
-            agent.isStopped = true;
+            
 
         }
         if(distance <= attackRange)
         {
-            animMonster.SetBool("isAttack",true);
-            agent.isStopped = true;
+            IsUnMoveable();
+            IsCharge = true;
+            animMonster.SetBool("isCharge",true);
+           
+            
         }
         else
         {
-            animMonster.SetBool("isAttack", false);
-            agent.isStopped = false;
+            agent.speed = 3.5f ;
+            animMonster.SetBool("isCharge", false);
+            
+            
         }
         
     }
@@ -69,6 +79,26 @@ public class Enemy : MonoBehaviour
     void Attack()
     {
         target.GetComponent<HealthComponentPlayer>().TakeDamage(20);
+        
+        
+    }
+    void IsMoveable()
+    {
+        agent.isStopped = false;
+
+    }
+    void MultiplySpeed()
+    {
+        agent.speed = 1000;
+    }
+    void IsUnMoveable()
+    {
+        agent.isStopped = true;
+
+    }
+    void IsNotCharge()
+    {
+        IsCharge = false;
         
     }
 }
