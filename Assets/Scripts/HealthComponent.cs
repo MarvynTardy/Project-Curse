@@ -16,7 +16,7 @@ public class HealthComponent : MonoBehaviour
     public Material emissiveMaterial;
 
     [Header("Feedback Properties")]
-    float blinkDuration = 2.0f;
+    float blinkDuration = 0.15f;
 
     [Header("Life Properties")]
     public int maxHealth = 100;
@@ -53,7 +53,7 @@ public class HealthComponent : MonoBehaviour
 
         if (gettingHurt)
         {
-            characterRenderer.material.color = Color.Lerp(Color.white, characterRenderer.material.color, Mathf.Abs(Mathf.Sin(Time.time * 100)));
+            StartCoroutine(Blink());
             
         }
     }
@@ -106,6 +106,13 @@ public class HealthComponent : MonoBehaviour
     {
         Debug.Log(this.gameObject + " is Dead");
         Destroy(gameObject);
+    }
+    public IEnumerator Blink()
+    {
+        characterRenderer.material.color = Color.Lerp(Color.white, characterRenderer.material.color, Mathf.Abs(Mathf.Sin(Time.time * 1000)));
+        yield return new WaitForSeconds(blinkDuration);
+        characterRenderer.material.color = Color.Lerp(Color.black, characterRenderer.material.color, Mathf.Abs(Mathf.Sin(Time.time * 1000)));
+        gettingHurt = false;
     }
 }
 
