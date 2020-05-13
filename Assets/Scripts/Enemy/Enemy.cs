@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
     }
     void Attack()
     {
-        target.GetComponent<HealthComponent>().TakeDamage(20);
+        target.GetComponent<HealthComponentPlayer>().TakeDamage(20);
         
     }
 }

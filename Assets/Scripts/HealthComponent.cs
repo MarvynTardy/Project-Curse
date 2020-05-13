@@ -22,7 +22,7 @@ public class HealthComponent : MonoBehaviour
     void Start()
     {
         healthSlider.maxValue = maxHealth;
-        healthSlider.value = healthSlider.maxValue;
+        healthSlider.value = healthSlider.maxValue / 2;
         currenthealth = maxHealth;
 
         m_CurrentTimeBreak = timeBreak;
