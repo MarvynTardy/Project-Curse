@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class billboard : MonoBehaviour
 {
-    public Transform Cam;
+    private Camera Cam;
 
+    private void Start()
+    {
+        Cam = FindObjectOfType<Camera>();
+    }
     private void LateUpdate()
     {
-        transform.LookAt(transform.position + Cam.right);
+        transform.LookAt(new Vector3(Cam.transform.position.x, -90, Cam.transform.position.z));
+
     }
 }
