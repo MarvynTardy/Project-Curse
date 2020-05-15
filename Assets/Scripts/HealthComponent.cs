@@ -12,9 +12,9 @@ public class HealthComponent : MonoBehaviour
     public ParticleSystem hitParticle;
     public Animator anim;
     SkinnedMeshRenderer characterRenderer = null;
-    
-    List<Material> savedMat = new List<Material>();
-    public List<Material> replaceMat = new List<Material>();
+
+    Material[] savedMat;
+    public Material[] replaceMat;
     
 
     [Header("Feedback Properties")]
@@ -36,15 +36,18 @@ public class HealthComponent : MonoBehaviour
 
         m_CurrentTimeBreak = timeBreak;
         characterRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        foreach (Material material in characterRenderer.materials)
+        savedMat = new Material[characterRenderer.materials.Length];
+        for (int i = 0; i < characterRenderer.materials.Length; i++)
         {
-            savedMat.Add(material);
+            Debug.Log(characterRenderer.materials[i]);
+
+            savedMat[i] = characterRenderer.materials[i];
+            
+            Debug.Log(characterRenderer.materials[i]);
         }
-    }
+        
 
 
-    private void Update()
-    {
         if (Input.GetKeyDown(KeyCode.J))
         {
             TakeDamage(10);
@@ -55,12 +58,16 @@ public class HealthComponent : MonoBehaviour
             Heal(10);
         }
 
+        
+    }
+    private void Update()
+    {
         if (gettingHurt)
         {
-            //StartCoroutine(Blink());
+            
             
             ChangeMat();
-            //Invoke("ResetMat", 0.2f);
+            Invoke("ResetMat", 0.2f);
             gettingHurt = false;
 
         }
@@ -107,21 +114,23 @@ public class HealthComponent : MonoBehaviour
     public void ChangeMat()
     {
         Debug.Log("change color");
-        for (int i = 0; i < characterRenderer.materials.Length; i++)
-        {
-            Debug.Log(characterRenderer.materials[i]);
-            characterRenderer.materials[i] = replaceMat[i];
-            Debug.Log(characterRenderer.materials[i]);
-        }
+        /* for (int i = 0; i < characterRenderer.materials.Length; i++)
+         {
+             Debug.Log(characterRenderer.materials[i]);
+             characterRenderer.materials[i] = replaceMat[i];
+             Debug.Log(characterRenderer.materials[i]);
+         }*/
+        characterRenderer.sharedMaterials = replaceMat;
     }
 
     public void ResetMat()
     {
         Debug.Log("reset color");
-        for (int i = 0; i < characterRenderer.materials.Length; i++)
+        /*for (int i = 0; i < characterRenderer.materials.Length; i++)
         {
             characterRenderer.materials[i] = savedMat[i];
-        }
+        }*/
+        characterRenderer.sharedMaterials = savedMat;
     }
 
     public void Heal(int healing)
@@ -135,13 +144,7 @@ public class HealthComponent : MonoBehaviour
         Debug.Log(this.gameObject + " is Dead");
         Destroy(gameObject);
     }
-    /*public IEnumerator Blink()
-    {
-        characterRenderer.material.color = Color.Lerp(Color.white, characterRenderer.material.color, Mathf.Abs(Mathf.Sin(Time.time * 1000)));
-        yield return new WaitForSeconds(blinkDuration);
-        characterRenderer.material.color = Color.Lerp(Color.black, characterRenderer.material.color, Mathf.Abs(Mathf.Sin(Time.time * 1000)));
-        gettingHurt = false;
-    }*/
+    
 }
 
 
