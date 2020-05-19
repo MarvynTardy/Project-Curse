@@ -8,6 +8,6 @@ public class billboard : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.LookAt(transform.position + Cam.right);
+        transform.LookAt(new Vector3(transform.position.x, transform.position.y, Cam.transform.position.z));
     }
 }
