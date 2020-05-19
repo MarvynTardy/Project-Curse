@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
         }
         if(distance <= attackRange)
         {
-            IsUnMoveable();
+            
             IsCharge = true;
             animMonster.SetBool("isCharge",true);
             
@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
     }
     void MultiplySpeed()
     {
-        agent.speed = 1000;
+        agent.speed = 100000;
     }
     void IsUnMoveable()
     {

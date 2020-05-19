@@ -9,8 +9,7 @@ public class PlayerHUD : MonoBehaviour
     //Slider de shoot
     public Slider shootSlider;
     public ShootController shootController;
-    //public Slider healthSlider;
-    //public Slider[] shootsSliders;
+
 
     public void Start()
     {
