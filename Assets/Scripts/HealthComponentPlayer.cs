@@ -11,6 +11,7 @@ public class HealthComponentPlayer : MonoBehaviour
     public ParticleSystem hitParticle;
     public Animator anim;
     public Image redWarning;
+    public PlayerController player;
 
     [Header("Life Properties")]
     public int maxHealth = 100;
@@ -19,6 +20,10 @@ public class HealthComponentPlayer : MonoBehaviour
     public bool gettingHurt;
     private float m_CurrentTimeBreak;
 
+    private bool m_IsRespawning;
+    private Vector3 m_RespawnPoint;
+    public float respawnLength = 2;
+
     void Start()
     {
         healthSlider.maxValue = maxHealth;
@@ -26,6 +31,10 @@ public class HealthComponentPlayer : MonoBehaviour
         currenthealth = maxHealth;
 
         m_CurrentTimeBreak = timeBreak;
+
+        player = FindObjectOfType<PlayerController>();
+        // Le respawn point se set par défaut là où le player commence le level
+        m_RespawnPoint = player.transform.position;
     }
 
 
@@ -84,19 +93,20 @@ public class HealthComponentPlayer : MonoBehaviour
             hitParticle.Clear();
             hitParticle.Play();
         }
-
+        
+        // Diminue la vie et met à jour le HUD
         currenthealth -= damage;
-
         healthSlider.value -= damage;
-
-
-        anim.SetTrigger("TakeDamage");
-
-        gettingHurt = true;
 
         if (currenthealth <= 0)
         {
-            Die();
+            Respawn();
+            // Die();
+        }
+        else
+        {
+            anim.SetTrigger("TakeDamage");
+            gettingHurt = true;
         }
     }
 
@@ -106,9 +116,33 @@ public class HealthComponentPlayer : MonoBehaviour
         healthSlider.value += healing;
     }
 
+    public void Respawn()
+    {
+        // anim.SetTrigger("SeMeurtDansDatroceSouffrance");
+
+        if (!m_IsRespawning)
+        {
+            StartCoroutine("RespawnCo");
+        }
+    }
+
+    public IEnumerator RespawnCo()
+    {
+        m_IsRespawning = true;
+        player.gameObject.SetActive(false);
+        Debug.Log("Respawn");
+        yield return new WaitForSeconds(respawnLength);
+        player.gameObject.SetActive(true);
+        // anim.SetTrigger("SeReleveDeLaMort");
+        player.transform.position = m_RespawnPoint;
+        currenthealth = maxHealth;
+        m_IsRespawning = false;
+        
+    }
+
     void Die()
     {
         Debug.Log(this.gameObject + " is Dead");
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 }

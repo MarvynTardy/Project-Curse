@@ -245,8 +245,9 @@ MonoBehaviour:
   bloodParticle: {fileID: 0}
   hitParticle: {fileID: 0}
   anim: {fileID: 2805020670402859134}
-  originalMaterial: {fileID: 0}
-  emissiveMaterial: {fileID: 0}
+  replaceMat:
+  - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
+  - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
   maxHealth: 100
   timeBreak: 0.2
   gettingHurt: 0
@@ -362,7 +363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b686e8a7084fda44e861d096db7b522e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cam: {fileID: 0}
 --- !u!1 &8425391571659949116
 GameObject:
   m_ObjectHideFlags: 0
