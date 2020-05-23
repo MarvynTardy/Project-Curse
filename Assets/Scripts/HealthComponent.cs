@@ -141,9 +141,9 @@ public class HealthComponent : MonoBehaviour
 
     void Die()
     {
-        anim.SetBool("isDead", true);
+        // anim.SetBool("isDead", true);
         Debug.Log(this.gameObject + " is Dead");
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
     
 }

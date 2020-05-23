@@ -11,6 +11,7 @@ public class HealthComponentPlayer : MonoBehaviour
     public ParticleSystem hitParticle;
     public Animator anim;
     public Image redWarning;
+    public Image blackScreen;
     public PlayerController player;
 
     [Header("Life Properties")]
@@ -22,7 +23,11 @@ public class HealthComponentPlayer : MonoBehaviour
 
     private bool m_IsRespawning;
     private Vector3 m_RespawnPoint;
-    public float respawnLength = 2;
+    private float respawnLength = 4;
+    private bool isFadeToBlack;
+    private bool isFadeFromBlack;
+    public float fadeSpeed;
+    private float waitForFade = 2;
 
     void Start()
     {
@@ -119,7 +124,10 @@ public class HealthComponentPlayer : MonoBehaviour
     public void Respawn()
     {
         // anim.SetTrigger("SeMeurtDansDatroceSouffrance");
-
+        blackScreen.enabled = true;
+        blackScreen.CrossFadeAlpha(0, 0.01f, false);
+        
+        blackScreen.CrossFadeAlpha(1, respawnLength, false);
         if (!m_IsRespawning)
         {
             StartCoroutine("RespawnCo");
@@ -132,11 +140,16 @@ public class HealthComponentPlayer : MonoBehaviour
         player.gameObject.SetActive(false);
         Debug.Log("Respawn");
         yield return new WaitForSeconds(respawnLength);
-        player.gameObject.SetActive(true);
-        // anim.SetTrigger("SeReleveDeLaMort");
+        // isFadeToBlack = true;
+        blackScreen.CrossFadeAlpha(0, waitForFade, false);
         player.transform.position = m_RespawnPoint;
         currenthealth = maxHealth;
+        yield return new WaitForSeconds(waitForFade);
+        // isFadeFromBlack = false;
+        player.gameObject.SetActive(true);
+        // anim.SetTrigger("SeReleveDeLaMort");
         m_IsRespawning = false;
+        blackScreen.enabled = false;
         
     }
 
