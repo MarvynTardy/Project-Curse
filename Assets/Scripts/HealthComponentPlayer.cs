@@ -153,6 +153,11 @@ public class HealthComponentPlayer : MonoBehaviour
         
     }
 
+    public void SetSpawnPoint(Vector3 newPosition)
+    {
+        m_RespawnPoint = newPosition;
+    }
+
     void Die()
     {
         Debug.Log(this.gameObject + " is Dead");
