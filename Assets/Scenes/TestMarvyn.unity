@@ -633,24 +633,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2016121011358210007, guid: ae0b62f5ff9e4274488336eed2af43cc,
         type: 3}
-      propertyPath: replaceMat.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016121011358210007, guid: ae0b62f5ff9e4274488336eed2af43cc,
-        type: 3}
       propertyPath: savedMat.Array.size
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2016121011358210007, guid: ae0b62f5ff9e4274488336eed2af43cc,
-        type: 3}
-      propertyPath: replaceMat.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
-    - target: {fileID: 2016121011358210007, guid: ae0b62f5ff9e4274488336eed2af43cc,
-        type: 3}
-      propertyPath: replaceMat.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
     - target: {fileID: 2016121011358210007, guid: ae0b62f5ff9e4274488336eed2af43cc,
         type: 3}
       propertyPath: blinkMaterial

@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
 
         // Gestion des conditions de l'animator du player
         animPlayer.SetBool("isGrounded", m_Controller.isGrounded);
-        animPlayer.SetFloat("Speed", (Mathf.Abs(Input.GetAxisRaw("Vertical")) + Mathf.Abs(Input.GetAxisRaw("Horizontal"))));
     }
 
     public void Move()
@@ -103,6 +102,8 @@ public class PlayerController : MonoBehaviour
         
         // ↓ Restaure la valeur de y avant qu'il soit Normalized pour pas que le normalized n'affecte l'axe y
         moveDirection.y = yStore;
+        
+        animPlayer.SetFloat("Speed", (Mathf.Abs(Input.GetAxisRaw("Vertical")) + Mathf.Abs(Input.GetAxisRaw("Horizontal"))));
     }
 
     public void Jump()
