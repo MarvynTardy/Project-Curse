@@ -32,7 +32,7 @@ public class HealthComponent : MonoBehaviour
     {
         healthSlider.maxValue = maxHealth;
         healthSlider.value = healthSlider.maxValue / 2 ;
-        currenthealth = maxHealth / 2;
+        currenthealth = maxHealth;
 
         m_CurrentTimeBreak = timeBreak;
         characterRenderer = GetComponentInChildren<SkinnedMeshRenderer>();

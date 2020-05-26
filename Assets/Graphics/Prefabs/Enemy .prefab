@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 8590501968699807247}
   - component: {fileID: 7404575913016440250}
   - component: {fileID: 323823680682416194}
-  - component: {fileID: 4925584518091371463}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -157,18 +156,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4925584518091371463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3100234082837380084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b686e8a7084fda44e861d096db7b522e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &2016121011358210006
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -258,13 +245,8 @@ MonoBehaviour:
   bloodParticle: {fileID: 0}
   hitParticle: {fileID: 0}
   anim: {fileID: 2805020670402859134}
-<<<<<<< HEAD
-  replaceMat: []
-=======
-  replaceMat:
-  - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
-  - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
->>>>>>> 4b9e04deaa156e6587ab4aaef0866f852697c1b2
+  originalMaterial: {fileID: 0}
+  emissiveMaterial: {fileID: 0}
   maxHealth: 100
   timeBreak: 0.2
   gettingHurt: 0
@@ -280,6 +262,7 @@ GameObject:
   - component: {fileID: 3270500081902014388}
   - component: {fileID: 5271641719309283551}
   - component: {fileID: 3056727740165922105}
+  - component: {fileID: 3706325758109608371}
   m_Layer: 5
   m_Name: EnemyHUD
   m_TagString: Untagged
@@ -367,8 +350,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-<<<<<<< HEAD
-=======
 --- !u!114 &3706325758109608371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b686e8a7084fda44e861d096db7b522e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> 4b9e04deaa156e6587ab4aaef0866f852697c1b2
+  Cam: {fileID: 0}
 --- !u!1 &8425391571659949116
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +374,6 @@ GameObject:
   - component: {fileID: 6758323629401644347}
   - component: {fileID: 4281537615986433523}
   - component: {fileID: 8863355591078922349}
-  - component: {fileID: 3729878809652578769}
   m_Layer: 5
   m_Name: Circle
   m_TagString: Untagged
@@ -456,18 +436,6 @@ MonoBehaviour:
   m_FillOrigin: 3
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3729878809652578769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8425391571659949116}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b686e8a7084fda44e861d096db7b522e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5118898611057797570
 PrefabInstance:
   m_ObjectHideFlags: 0
