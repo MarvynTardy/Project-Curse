@@ -11,6 +11,8 @@ public class HealthComponentPlayer : MonoBehaviour
     public ParticleSystem hitParticle;
     public Animator anim;
     public Image redWarning;
+    public Image blackScreen;
+    public PlayerController player;
 
     [Header("Life Properties")]
     public int maxHealth = 100;
@@ -19,6 +21,14 @@ public class HealthComponentPlayer : MonoBehaviour
     public bool gettingHurt;
     private float m_CurrentTimeBreak;
 
+    private bool m_IsRespawning;
+    private Vector3 m_RespawnPoint;
+    private float respawnLength = 4;
+    private bool isFadeToBlack;
+    private bool isFadeFromBlack;
+    public float fadeSpeed;
+    private float waitForFade = 2;
+
     void Start()
     {
         healthSlider.maxValue = maxHealth;
@@ -26,6 +36,10 @@ public class HealthComponentPlayer : MonoBehaviour
         currenthealth = maxHealth;
 
         m_CurrentTimeBreak = timeBreak;
+
+        player = FindObjectOfType<PlayerController>();
+        // Le respawn point se set par défaut là où le player commence le level
+        m_RespawnPoint = player.transform.position;
     }
 
 
@@ -84,19 +98,20 @@ public class HealthComponentPlayer : MonoBehaviour
             hitParticle.Clear();
             hitParticle.Play();
         }
-
+        
+        // Diminue la vie et met à jour le HUD
         currenthealth -= damage;
-
         healthSlider.value -= damage;
-
-
-        anim.SetTrigger("TakeDamage");
-
-        gettingHurt = true;
 
         if (currenthealth <= 0)
         {
-            Die();
+            Respawn();
+            // Die();
+        }
+        else
+        {
+            anim.SetTrigger("TakeDamage");
+            gettingHurt = true;
         }
     }
 
@@ -106,9 +121,46 @@ public class HealthComponentPlayer : MonoBehaviour
         healthSlider.value += healing;
     }
 
+    public void Respawn()
+    {
+        // anim.SetTrigger("SeMeurtDansDatroceSouffrance");
+        blackScreen.enabled = true;
+        blackScreen.CrossFadeAlpha(0, 0.01f, false);
+        
+        blackScreen.CrossFadeAlpha(1, respawnLength, false);
+        if (!m_IsRespawning)
+        {
+            StartCoroutine("RespawnCo");
+        }
+    }
+
+    public IEnumerator RespawnCo()
+    {
+        m_IsRespawning = true;
+        player.gameObject.SetActive(false);
+        Debug.Log("Respawn");
+        yield return new WaitForSeconds(respawnLength);
+        // isFadeToBlack = true;
+        blackScreen.CrossFadeAlpha(0, waitForFade, false);
+        player.transform.position = m_RespawnPoint;
+        currenthealth = maxHealth;
+        yield return new WaitForSeconds(waitForFade);
+        // isFadeFromBlack = false;
+        player.gameObject.SetActive(true);
+        // anim.SetTrigger("SeReleveDeLaMort");
+        m_IsRespawning = false;
+        blackScreen.enabled = false;
+        
+    }
+
+    public void SetSpawnPoint(Vector3 newPosition)
+    {
+        m_RespawnPoint = newPosition;
+    }
+
     void Die()
     {
         Debug.Log(this.gameObject + " is Dead");
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 }

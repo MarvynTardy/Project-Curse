@@ -23,7 +23,7 @@ public class HealthComponent : MonoBehaviour
     [Header("Life Properties")]
     public int maxHealth = 100;
     public float timeBreak = 0.2f;
-    private int currenthealth;
+    public int currenthealth;
     public bool gettingHurt;
     private float m_CurrentTimeBreak;
     
@@ -39,11 +39,11 @@ public class HealthComponent : MonoBehaviour
         savedMat = new Material[characterRenderer.materials.Length];
         for (int i = 0; i < characterRenderer.materials.Length; i++)
         {
-            Debug.Log(characterRenderer.materials[i]);
+            // Debug.Log(characterRenderer.materials[i]);
 
             savedMat[i] = characterRenderer.materials[i];
             
-            Debug.Log(characterRenderer.materials[i]);
+            // Debug.Log(characterRenderer.materials[i]);
         }
         
 
@@ -113,7 +113,7 @@ public class HealthComponent : MonoBehaviour
 
     public void ChangeMat()
     {
-        Debug.Log("change color");
+        // Debug.Log("change color");
         /* for (int i = 0; i < characterRenderer.materials.Length; i++)
          {
              Debug.Log(characterRenderer.materials[i]);
@@ -125,7 +125,7 @@ public class HealthComponent : MonoBehaviour
 
     public void ResetMat()
     {
-        Debug.Log("reset color");
+        // Debug.Log("reset color");
         /*for (int i = 0; i < characterRenderer.materials.Length; i++)
         {
             characterRenderer.materials[i] = savedMat[i];
@@ -141,8 +141,9 @@ public class HealthComponent : MonoBehaviour
 
     void Die()
     {
+        // anim.SetBool("isDead", true);
         Debug.Log(this.gameObject + " is Dead");
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
     
 }

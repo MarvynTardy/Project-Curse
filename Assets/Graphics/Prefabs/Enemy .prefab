@@ -258,7 +258,13 @@ MonoBehaviour:
   bloodParticle: {fileID: 0}
   hitParticle: {fileID: 0}
   anim: {fileID: 2805020670402859134}
+<<<<<<< HEAD
   replaceMat: []
+=======
+  replaceMat:
+  - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
+  - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
+>>>>>>> 4b9e04deaa156e6587ab4aaef0866f852697c1b2
   maxHealth: 100
   timeBreak: 0.2
   gettingHurt: 0
@@ -361,6 +367,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+<<<<<<< HEAD
+=======
+--- !u!114 &3706325758109608371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278131066215612113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b686e8a7084fda44e861d096db7b522e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> 4b9e04deaa156e6587ab4aaef0866f852697c1b2
 --- !u!1 &8425391571659949116
 GameObject:
   m_ObjectHideFlags: 0
