@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     public float hitRange = 2;
     public bool IsCharge = false;
+
+    public ParticleSystem slashParticle;
+
     void Start()
     {
         //on Recup le Nav Mesh
@@ -90,12 +93,11 @@ public class Enemy : MonoBehaviour
     }
     void Attack()
     {
-        
+        slashParticle.Play();
 
         if (distance <= hitRange)
         {
-            target.GetComponent<HealthComponentPlayer>().TakeDamage(20);
-
+            GetComponent<HealthComponentPlayer>().TakeDamage(20);
         }
         agent.SetDestination(target.position);
         
