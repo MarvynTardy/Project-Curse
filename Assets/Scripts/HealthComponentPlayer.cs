@@ -28,6 +28,7 @@ public class HealthComponentPlayer : MonoBehaviour
     private bool isFadeFromBlack;
     public float fadeSpeed;
     private float waitForFade = 2;
+    public bool isDead = false;
 
     void Start()
     {
@@ -123,7 +124,9 @@ public class HealthComponentPlayer : MonoBehaviour
 
     public void Respawn()
     {
-        // anim.SetTrigger("SeMeurtDansDatroceSouffrance");
+        player.isMovable = false;
+        player.moveDirection = Vector3.zero;
+
         blackScreen.enabled = true;
         blackScreen.CrossFadeAlpha(0, 0.01f, false);
         
@@ -137,19 +140,22 @@ public class HealthComponentPlayer : MonoBehaviour
     public IEnumerator RespawnCo()
     {
         m_IsRespawning = true;
-        player.gameObject.SetActive(false);
+        // player.gameObject.SetActive(false);
+        anim.SetTrigger("isDead");
         Debug.Log("Respawn");
         yield return new WaitForSeconds(respawnLength);
+        anim.SetTrigger("isRaise");
         // isFadeToBlack = true;
         blackScreen.CrossFadeAlpha(0, waitForFade, false);
         player.transform.position = m_RespawnPoint;
         currenthealth = maxHealth;
         yield return new WaitForSeconds(waitForFade);
         // isFadeFromBlack = false;
-        player.gameObject.SetActive(true);
+        // player.gameObject.SetActive(true);
         // anim.SetTrigger("SeReleveDeLaMort");
         m_IsRespawning = false;
         blackScreen.enabled = false;
+        player.isMovable = true;
         
     }
 
