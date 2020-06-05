@@ -110,7 +110,7 @@ public class Enemy : MonoBehaviour
     }
     void MultiplySpeed()
     {
-        agent.speed = 100000;
+        agent.speed = 1000;
     }
     void IsUnMoveable()
     {
