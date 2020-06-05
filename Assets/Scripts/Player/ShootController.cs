@@ -10,6 +10,7 @@ public class ShootController : MonoBehaviour
     public Transform firePoint;
     public BulletController bullet;
     private PlayerController m_PlayerController;
+    public ParticleSystem reloadParticle;
     // private PlayerHUD m_PlayerHUD;
 
     [Header("Shoot Properties")]
@@ -31,6 +32,11 @@ public class ShootController : MonoBehaviour
         {
             isFiring = true;
             Shoot();
+        }
+
+        if (Input.GetKeyDown("r") && stamina < 5)
+        {
+            canFire = false;
         }
 
         if (stamina == 0)
@@ -74,6 +80,8 @@ public class ShootController : MonoBehaviour
 
     public void Reloading()
     {
+        reloadParticle.Play();
+
         stamina += reloadTime * Time.deltaTime;
         if (stamina >= 5)
         {
