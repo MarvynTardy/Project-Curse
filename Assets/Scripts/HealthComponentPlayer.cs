@@ -22,7 +22,7 @@ public class HealthComponentPlayer : MonoBehaviour
     private float m_CurrentTimeBreak;
 
     private bool m_IsRespawning;
-    private Vector3 m_RespawnPoint;
+    public Vector3 m_RespawnPoint;
     private float respawnLength = 4;
     private bool isFadeToBlack;
     private bool isFadeFromBlack;
@@ -48,12 +48,12 @@ public class HealthComponentPlayer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            TakeDamage(10);
+            TakeDamage(1);
         }
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            Heal(10);
+            Heal();
         }
 
         if (gettingHurt)
@@ -116,10 +116,10 @@ public class HealthComponentPlayer : MonoBehaviour
         }
     }
 
-    public void Heal(int healing)
+    public void Heal()
     {
-        currenthealth += healing;
-        healthSlider.value += healing;
+        currenthealth = maxHealth;
+        healthSlider.value = healthSlider.maxValue;
     }
 
     public void Respawn()
@@ -140,23 +140,20 @@ public class HealthComponentPlayer : MonoBehaviour
     public IEnumerator RespawnCo()
     {
         m_IsRespawning = true;
-        // player.gameObject.SetActive(false);
         anim.SetTrigger("isDead");
         Debug.Log("Respawn");
+
         yield return new WaitForSeconds(respawnLength);
-        anim.SetTrigger("isRaise");
-        // isFadeToBlack = true;
-        blackScreen.CrossFadeAlpha(0, waitForFade, false);
         player.transform.position = m_RespawnPoint;
+        healthSlider.value = healthSlider.maxValue;
+        anim.SetTrigger("isRaise");
+        blackScreen.CrossFadeAlpha(0, waitForFade, false);
         currenthealth = maxHealth;
+
         yield return new WaitForSeconds(waitForFade);
-        // isFadeFromBlack = false;
-        // player.gameObject.SetActive(true);
-        // anim.SetTrigger("SeReleveDeLaMort");
         m_IsRespawning = false;
         blackScreen.enabled = false;
-        player.isMovable = true;
-        
+        player.isMovable = true;        
     }
 
     public void SetSpawnPoint(Vector3 newPosition)

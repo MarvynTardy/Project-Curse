@@ -5,9 +5,9 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     public HealthComponentPlayer healthComponentPlayer;
-    public Renderer renderer;
-    public Material chOff;
-    public Material chOn;
+    public Renderer chRenderer;
+    public Material[] chOff;
+    public Material[] chOn;
     public ParticleSystem chParticle;
 
     void Start()
@@ -15,27 +15,27 @@ public class Checkpoint : MonoBehaviour
         healthComponentPlayer = FindObjectOfType<HealthComponentPlayer>();
     }
 
-    void Update()
-    {
-
-    }
-
     public void CheckpointOn()
     {
+        healthComponentPlayer.Heal();
+
+
         Checkpoint[] checkpointsArray = FindObjectsOfType<Checkpoint>();
         foreach(Checkpoint cp in checkpointsArray)
         {
             cp.CheckpointOff();
         }
 
+        chRenderer.materials = chOn;
+
         chParticle.Play();
 
-        renderer.material = chOn;
+        // chRenderer.material = chOn;
     }
 
     public void CheckpointOff()
     {
-        renderer.material = chOff;
+        chRenderer.materials = chOff;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,7 +44,8 @@ public class Checkpoint : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             Debug.Log("Respawn Point set");
-            healthComponentPlayer.SetSpawnPoint(transform.position);
+            healthComponentPlayer.SetSpawnPoint(new Vector3 (transform.position.x, transform.position.y + 0.5f ,transform.position.z));
+            Debug.Log(healthComponentPlayer.m_RespawnPoint);
             CheckpointOn();
         }
     }
