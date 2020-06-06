@@ -13,18 +13,20 @@ public class EnemyDasher : MonoBehaviour
     public float timeBeforeDash = 2;
     public float detectionRange = 10;
     private Rigidbody rb;
-    public Transform player;
+    Transform target;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        PlayerController player = FindObjectOfType<PlayerController>();
+        target = player.transform;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(player.transform.position, transform.position);
+        float distance = Vector3.Distance(target.transform.position, transform.position);
         if (distance <= detectionRange)
         {
             if (currentTimeBeforeDash < timeBeforeDash)
@@ -38,7 +40,7 @@ public class EnemyDasher : MonoBehaviour
                 currentTimeBeforeDash = 0;
                 
             }
-            transform.LookAt(player.transform.position);
+            transform.LookAt(target.transform.position);
         }
         else
         {

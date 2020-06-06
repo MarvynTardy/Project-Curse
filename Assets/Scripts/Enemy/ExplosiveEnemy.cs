@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class ExplosiveEnemy : MonoBehaviour
 {
+    public Animator animMonster;
     NavMeshAgent agent;
     Transform target;
     public float distance;
@@ -15,7 +16,7 @@ public class ExplosiveEnemy : MonoBehaviour
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInParent<NavMeshAgent>();
 
         PlayerController player = FindObjectOfType<PlayerController>();
         target = player.transform;
@@ -29,17 +30,19 @@ public class ExplosiveEnemy : MonoBehaviour
         if (distance <= detectionRange)
         {
            agent.SetDestination(target.position);
-            
+           animMonster.SetBool("IsRunning", true);
 
         }
         else
         {
             agent.SetDestination(transform.position);
+            animMonster.SetBool("IsRunning", false);
         }
         if(distance <= attackRange)
         {
             agent.isStopped = true;
             boom = true;
+            animMonster.SetBool("IsRunning", false);
         }
         if (boom == true)
         {
