@@ -5,16 +5,18 @@ using UnityEngine.AI;
 
 public class ExplosiveEnemy : MonoBehaviour
 {
+    public Animator animMonster;
     NavMeshAgent agent;
     Transform target;
     public float distance;
     public float detectionRange = 10f;
     public float attackRange;
     public float timeExplode = 2.0f;
+    public bool boom = false;
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInParent<NavMeshAgent>();
 
         PlayerController player = FindObjectOfType<PlayerController>();
         target = player.transform;
@@ -28,18 +30,25 @@ public class ExplosiveEnemy : MonoBehaviour
         if (distance <= detectionRange)
         {
            agent.SetDestination(target.position);
-            
+           animMonster.SetBool("IsRunning", true);
 
         }
         else
         {
             agent.SetDestination(transform.position);
+            animMonster.SetBool("IsRunning", false);
         }
         if(distance <= attackRange)
         {
             agent.isStopped = true;
+            boom = true;
+            animMonster.SetBool("IsRunning", false);
         }
-
+        if (boom == true)
+        {
+            Debug.Log("boom");
+            StartCoroutine(Explosion());
+        }
     }
 
     IEnumerator Explosion()
@@ -54,6 +63,15 @@ public class ExplosiveEnemy : MonoBehaviour
                 obj.GetComponent<HealthComponentPlayer>().TakeDamage(2);
             }
         }
+        Destroy(gameObject);
+
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
 
     }
 }
