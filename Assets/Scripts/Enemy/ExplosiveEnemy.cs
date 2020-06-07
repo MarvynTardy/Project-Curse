@@ -8,6 +8,7 @@ public class ExplosiveEnemy : MonoBehaviour
     public Animator animMonster;
     NavMeshAgent agent;
     Transform target;
+    public GameObject explosion;
     public float distance;
     public float detectionRange = 10f;
     public float attackRange;
@@ -63,8 +64,9 @@ public class ExplosiveEnemy : MonoBehaviour
                 obj.GetComponent<HealthComponentPlayer>().TakeDamage(2);
             }
         }
-        Destroy(gameObject);
+        Instantiate(explosion, transform.position, explosion.transform.rotation);
 
+        Destroy(gameObject);
     }
     private void OnDrawGizmos()
     {
@@ -72,6 +74,5 @@ public class ExplosiveEnemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectionRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, attackRange);
-
-    }
+    } 
 }

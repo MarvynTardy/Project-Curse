@@ -32,6 +32,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animMonster: {fileID: 6785550446726456136}
+  explosion: {fileID: 3579570857098451253, guid: 3bea71db1d297c8449de4367726a9cb9,
+    type: 3}
   distance: 0
   detectionRange: 10
   attackRange: 3

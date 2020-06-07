@@ -303,6 +303,9 @@ MonoBehaviour:
   bloodParticle: {fileID: 0}
   hitParticle: {fileID: 0}
   anim: {fileID: 2805020670402859134}
+  scriptEnemy: {fileID: 2016121011358210005}
+  HUD: {fileID: 3270500081902014388}
+  colliderEntity: {fileID: 2016121011358210006}
   replaceMat:
   - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
   - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}

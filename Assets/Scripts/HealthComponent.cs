@@ -11,14 +11,13 @@ public class HealthComponent : MonoBehaviour
     public ParticleSystem bloodParticle;
     public ParticleSystem hitParticle;
     public Animator anim;
+    public Enemy scriptEnemy;
+    public Canvas HUD;
+    public Collider colliderEntity;
     SkinnedMeshRenderer characterRenderer = null;
 
     Material[] savedMat;
     public Material[] replaceMat;
-    
-
-    [Header("Feedback Properties")]
-    float blinkDuration = 0.15f;
 
     [Header("Life Properties")]
     public int maxHealth = 100;
@@ -26,7 +25,6 @@ public class HealthComponent : MonoBehaviour
     public float currenthealth;
     public bool gettingHurt;
     private float m_CurrentTimeBreak;
-    
 
     void Start()
     {
@@ -39,15 +37,9 @@ public class HealthComponent : MonoBehaviour
         savedMat = new Material[characterRenderer.materials.Length];
         for (int i = 0; i < characterRenderer.materials.Length; i++)
         {
-            // Debug.Log(characterRenderer.materials[i]);
-
             savedMat[i] = characterRenderer.materials[i];
-            
-            // Debug.Log(characterRenderer.materials[i]);
         }
         
-
-
         if (Input.GetKeyDown(KeyCode.J))
         {
             TakeDamage(10);
@@ -56,10 +48,9 @@ public class HealthComponent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             Heal(10);
-        }
-
-        
+        }        
     }
+
     private void Update()
     {
         if (gettingHurt)
@@ -99,8 +90,8 @@ public class HealthComponent : MonoBehaviour
 
         healthSlider.value -= damage / 2;
         
-
-        anim.SetTrigger("TakeDamage");
+            anim.SetTrigger("TakeDamage");
+        
 
         gettingHurt = true;
 
@@ -140,7 +131,10 @@ public class HealthComponent : MonoBehaviour
 
     void Die()
     {
-        anim.SetBool("IsDead", true);
+        colliderEntity.enabled = false;
+        HUD.enabled = false;
+        scriptEnemy.enabled = false;
+        anim.SetTrigger("isDead");
         Debug.Log(this.gameObject + " is Dead");
         // Destroy(gameObject);
     }
