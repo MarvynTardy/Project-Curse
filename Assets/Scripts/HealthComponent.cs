@@ -23,7 +23,7 @@ public class HealthComponent : MonoBehaviour
     [Header("Life Properties")]
     public int maxHealth = 100;
     public float timeBreak = 0.2f;
-    public int currenthealth;
+    public float currenthealth;
     public bool gettingHurt;
     private float m_CurrentTimeBreak;
     
@@ -31,7 +31,7 @@ public class HealthComponent : MonoBehaviour
     void Start()
     {
         healthSlider.maxValue = maxHealth;
-        healthSlider.value = healthSlider.maxValue / 2 ;
+        healthSlider.value = healthSlider.maxValue / 2;
         currenthealth = maxHealth;
 
         m_CurrentTimeBreak = timeBreak;
@@ -63,9 +63,8 @@ public class HealthComponent : MonoBehaviour
     private void Update()
     {
         if (gettingHurt)
-        {
-            
-            
+        {      
+           
             ChangeMat();
             Invoke("ResetMat", 0.2f);
             gettingHurt = false;
@@ -83,7 +82,7 @@ public class HealthComponent : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (bloodParticle != null)
         {
@@ -98,7 +97,7 @@ public class HealthComponent : MonoBehaviour
 
         currenthealth -= damage;
 
-        healthSlider.value -= damage;
+        healthSlider.value -= damage / 2;
         
 
         anim.SetTrigger("TakeDamage");

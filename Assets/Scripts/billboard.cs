@@ -12,7 +12,7 @@ public class billboard : MonoBehaviour
     }
     private void LateUpdate()
     {
-        transform.LookAt(new Vector3(Cam.transform.position.x, -90, Cam.transform.position.z));
-
+        // transform.LookAt(new Vector3(Cam.transform.position.x, -90, Cam.transform.position.z));
+        transform.LookAt(transform.position + Cam.transform.forward);
     }
 }
