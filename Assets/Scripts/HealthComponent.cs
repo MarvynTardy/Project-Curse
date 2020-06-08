@@ -122,7 +122,6 @@ public class HealthComponent : MonoBehaviour
                 break;
 
             case 2:
-
                 break;
 
             default:
