@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 
@@ -8,12 +9,13 @@ public class HealthComponent : MonoBehaviour
 {
     [Header("Références")]
     public Slider healthSlider;
-    public ParticleSystem bloodParticle;
-    public ParticleSystem hitParticle;
     public Animator anim;
     public Enemy scriptEnemy;
     public Canvas HUD;
     public Collider colliderEntity;
+    public NavMeshAgent agent;
+    [Range(0, 4)]
+    public int enemyKind;
     SkinnedMeshRenderer characterRenderer = null;
 
     Material[] savedMat;
@@ -75,17 +77,6 @@ public class HealthComponent : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (bloodParticle != null)
-        {
-            bloodParticle.Play();
-        }
-
-        if (hitParticle != null)
-        {
-            hitParticle.Clear();
-            hitParticle.Play();
-        }
-
         currenthealth -= damage;
 
         healthSlider.value -= damage / 2;
@@ -103,23 +94,11 @@ public class HealthComponent : MonoBehaviour
 
     public void ChangeMat()
     {
-        // Debug.Log("change color");
-        /* for (int i = 0; i < characterRenderer.materials.Length; i++)
-         {
-             Debug.Log(characterRenderer.materials[i]);
-             characterRenderer.materials[i] = replaceMat[i];
-             Debug.Log(characterRenderer.materials[i]);
-         }*/
         characterRenderer.sharedMaterials = replaceMat;
     }
 
     public void ResetMat()
     {
-        // Debug.Log("reset color");
-        /*for (int i = 0; i < characterRenderer.materials.Length; i++)
-        {
-            characterRenderer.materials[i] = savedMat[i];
-        }*/
         characterRenderer.sharedMaterials = savedMat;
     }
 
@@ -131,10 +110,26 @@ public class HealthComponent : MonoBehaviour
 
     void Die()
     {
-        colliderEntity.enabled = false;
         HUD.enabled = false;
-        scriptEnemy.enabled = false;
-        anim.SetTrigger("isDead");
+
+        switch (enemyKind)
+        {
+            case 1:
+                colliderEntity.enabled = false;
+                scriptEnemy.enabled = false;
+                agent.enabled = false;
+                anim.SetTrigger("isDead");
+                break;
+
+            case 2:
+
+                break;
+
+            default:
+                Debug.Log("Pas d'enemyKind déclaré");
+                break;
+        }
+
         Debug.Log(this.gameObject + " is Dead");
         // Destroy(gameObject);
     }
