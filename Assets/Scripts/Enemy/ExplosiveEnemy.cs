@@ -12,8 +12,9 @@ public class ExplosiveEnemy : MonoBehaviour
     public float distance;
     public float detectionRange = 10f;
     public float attackRange;
-    public float timeExplode = 2.0f;
+    public float timeExplode = 5;
     public bool boom = false;
+    public Canvas HUD;
 
     void Start()
     {
@@ -52,8 +53,17 @@ public class ExplosiveEnemy : MonoBehaviour
         }
     }
 
+    public void ExplosionHealthComponent()
+    {
+        // timeExplode = 0.3f;
+        StartCoroutine(Explosion());
+    }
+
     IEnumerator Explosion()
     {
+        agent.isStopped = true;
+        HUD.enabled = false;
+        animMonster.SetTrigger("isExploding");
         yield return new WaitForSeconds(timeExplode);
         Collider[] objects = Physics.OverlapSphere(transform.position, attackRange);
 

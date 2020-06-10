@@ -22,12 +22,14 @@ public class Enemy : MonoBehaviour
 
     public ParticleSystem slashParticle;
 
+    private PlayerController player;
+
     void Start()
     {
         //on Recup le Nav Mesh
         agent = GetComponent<NavMeshAgent>();
        
-        PlayerController player = FindObjectOfType<PlayerController>();
+        player = FindObjectOfType<PlayerController>();
         target = player.transform;
     }
 
@@ -97,7 +99,7 @@ public class Enemy : MonoBehaviour
 
         if (distance <= hitRange)
         {
-            GetComponent<HealthComponentPlayer>().TakeDamage(20);
+            player.GetComponent<HealthComponentPlayer>().TakeDamage(1);
         }
         agent.SetDestination(target.position);
         

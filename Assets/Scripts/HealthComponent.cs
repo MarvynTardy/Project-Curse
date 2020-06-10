@@ -11,6 +11,7 @@ public class HealthComponent : MonoBehaviour
     public Slider healthSlider;
     public Animator anim;
     public Enemy scriptEnemy;
+    public ExplosiveEnemy scriptExplosiveEnemy;
     public Canvas HUD;
     public Collider colliderEntity;
     public NavMeshAgent agent;
@@ -81,7 +82,13 @@ public class HealthComponent : MonoBehaviour
 
         healthSlider.value -= damage / 2;
         
-            anim.SetTrigger("TakeDamage");
+        switch (enemyKind)
+        {
+            case 1:
+                anim.SetTrigger("TakeDamage");
+                break;
+        }
+
         
 
         gettingHurt = true;
@@ -122,6 +129,14 @@ public class HealthComponent : MonoBehaviour
                 break;
 
             case 2:
+
+                break;
+
+            case 3:
+                colliderEntity.enabled = false;
+                scriptExplosiveEnemy.enabled = false;
+                scriptExplosiveEnemy.ExplosionHealthComponent();
+                agent.enabled = false;
                 break;
 
             default:

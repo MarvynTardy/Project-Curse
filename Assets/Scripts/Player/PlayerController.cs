@@ -113,6 +113,8 @@ public class PlayerController : MonoBehaviour
 
     public void Dash()
     {
+        moveDirection.y = 3;
+
         isMovable = true;
 
         isDodging = true;
