@@ -4986,7 +4986,7 @@ GameObject:
   - component: {fileID: 7243274425488488072}
   - component: {fileID: 6090288033085508619}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: BulletEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5025,7 +5025,7 @@ MonoBehaviour:
   lifeTime: 1
   layer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   explosionRange: 1
   explosionDamage: 1
   explosionFeedback: {fileID: 7666683706642841971, guid: 6ed738c518c2fdf4db7610d33dcd6c73,

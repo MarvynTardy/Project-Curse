@@ -6,7 +6,7 @@ public class BulletController : MonoBehaviour
 {
     public float speed = 1;
     public float lifeTime = 1;
-    public LayerMask enemyLayer;
+    public LayerMask layer;
     [Range(0, 5)]
     public float explosionRange = 1;
     [Range(0, 5)]
@@ -23,14 +23,24 @@ public class BulletController : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, explosionRange, enemyLayer);
+        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, explosionRange, layer);
 
-        foreach (Collider enemy in hitEnemies)
+        foreach (Collider obj in hitEnemies)
         {
-            Instantiate(explosionFeedback, transform.position, transform.rotation);
-            enemy.GetComponentInParent<HealthComponent>().TakeDamage(explosionDamage);
-            Destroy(this.gameObject);
+            if (obj.GetComponent<HealthComponent>())
+            {
+                Instantiate(explosionFeedback, transform.position, transform.rotation);
+                obj.GetComponentInParent<HealthComponent>().TakeDamage(explosionDamage);
+                Destroy(this.gameObject);
+            }
+            if (obj.GetComponent<HealthComponentPlayer>())
+            {
+                Instantiate(explosionFeedback, transform.position, transform.rotation);
+                obj.GetComponentInParent<HealthComponentPlayer>().TakeDamage(explosionDamage);
+                Destroy(this.gameObject);
+            }
         }
+           
     }
 
     void OnDrawGizmos()
