@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerModel;
     public ShootController shootAttack;
     public GameObject cursor;
+    public PauseMenu pauseMenu;
 
     private CharacterController m_Controller;
     private Camera m_MainCamera;
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        pauseMenu = FindObjectOfType<PauseMenu>();
         m_Controller = GetComponent<CharacterController>();
         m_MainCamera = FindObjectOfType<Camera>();
         Cursor.visible = false;
@@ -50,37 +52,40 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        MouseTarget();
-
-        if (isMovable)
+        if (!pauseMenu.gameIsPaused)
         {
-            Move();
-        }
+            MouseTarget();
 
-        if (m_Controller.isGrounded)
-        {
-            if (Input.GetButtonDown("Jump"))
+            if (isMovable)
             {
-                Jump();
+                Move();
             }
 
-            if (Time.time >= m_NextDashTime)
+            if (m_Controller.isGrounded)
             {
-                if (Input.GetButtonDown("Dash"))
+                if (Input.GetButtonDown("Jump"))
                 {
-                    animPlayer.SetTrigger("isDodging");
-                    m_NextDashTime = Time.time + 1f / dashRate;
+                    Jump();
+                }
+
+                if (Time.time >= m_NextDashTime)
+                {
+                    if (Input.GetButtonDown("Dash"))
+                    {
+                        animPlayer.SetTrigger("isDodging");
+                        m_NextDashTime = Time.time + 1f / dashRate;
+                    }
                 }
             }
+
+            // Gestion de la chute en l'air
+            moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+            // On applique le vector de direction à la fonction préfaite du CC move qui gère sa direction et vélocité
+            m_Controller.Move(moveDirection * Time.deltaTime);
+
+            // Gestion des conditions de l'animator du player
+            animPlayer.SetBool("isGrounded", m_Controller.isGrounded);
         }
-
-        // Gestion de la chute en l'air
-        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
-        // On applique le vector de direction à la fonction préfaite du CC move qui gère sa direction et vélocité
-        m_Controller.Move(moveDirection * Time.deltaTime);
-
-        // Gestion des conditions de l'animator du player
-        animPlayer.SetBool("isGrounded", m_Controller.isGrounded);
     }
 
     public void Move()
@@ -143,7 +148,7 @@ public class PlayerController : MonoBehaviour
         {
             pointToLook = m_CameraRay.GetPoint(m_RayLength);
             Debug.DrawLine(m_CameraRay.origin, pointToLook, Color.blue);
-            DisplayFBDrop(new Vector3(pointToLook.x, 1f, pointToLook.z));
+            DisplayFBDrop(new Vector3(pointToLook.x, this.transform.position.y, pointToLook.z));
             if (Input.GetButtonDown("Attack") || Input.GetMouseButtonDown(1))
             {
                 // playerModel.transform.LookAt(new Vector3(pointToLook.x, playerModel.transform.position.y, pointToLook.z));
@@ -164,6 +169,8 @@ public class PlayerController : MonoBehaviour
         {
             cursor.transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z));
         }
+
+        // cursor.transform.position = new Vector3(cursor.transform.position.x, this.transform.position.y, cursor.transform.position.z);
     }
 
     public void SetMovable()
