@@ -12,6 +12,7 @@ public class EnemyTurret : MonoBehaviour
     public BulletController bulletController;
     public float distance;
     public float bulletSpeed = 20f;
+    public ParticleSystem particleShoot;
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class EnemyTurret : MonoBehaviour
         {
             if(currentTimeBeforeShoot < timeBeforeShoot)
             {
+                particleShoot.Play();
                 currentTimeBeforeShoot += Time.deltaTime;
             }
             else
@@ -37,12 +39,14 @@ public class EnemyTurret : MonoBehaviour
             }
             if (currentTimeBeforeShoot >= timeBeforeShoot)
             {
+                particleShoot.Stop();
                 Shoot();
             }
         }
         else
         {
             currentTimeBeforeShoot = 0;
+            particleShoot.Stop();
         }
     }
     void Shoot()

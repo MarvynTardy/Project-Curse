@@ -33,6 +33,12 @@ public class BulletController : MonoBehaviour
                 obj.GetComponentInParent<HealthComponent>().TakeDamage(explosionDamage);
                 Destroy(this.gameObject);
             }
+            if (obj.GetComponentInParent<HealthComponent>())
+            {
+                Instantiate(explosionFeedback, transform.position, transform.rotation);
+                obj.GetComponentInParent<HealthComponent>().TakeDamage(explosionDamage);
+                Destroy(this.gameObject);
+            }
             if (obj.GetComponent<HealthComponentPlayer>())
             {
                 Instantiate(explosionFeedback, transform.position, transform.rotation);

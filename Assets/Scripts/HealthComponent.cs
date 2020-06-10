@@ -12,6 +12,7 @@ public class HealthComponent : MonoBehaviour
     public Animator anim;
     public Enemy scriptEnemy;
     public ExplosiveEnemy scriptExplosiveEnemy;
+    public EnemyTurret scriptEnemyTurret;
     public Canvas HUD;
     public Collider colliderEntity;
     public NavMeshAgent agent;
@@ -21,6 +22,7 @@ public class HealthComponent : MonoBehaviour
 
     Material[] savedMat;
     public Material[] replaceMat;
+    private bool m_IsFalling = false;
 
     [Header("Life Properties")]
     public int maxHealth = 100;
@@ -63,6 +65,11 @@ public class HealthComponent : MonoBehaviour
             Invoke("ResetMat", 0.2f);
             gettingHurt = false;
 
+        }
+
+        if (enemyKind == 4 && m_IsFalling)
+        {
+            this.gameObject.transform.position += new Vector3(0, -0.05f, 0);
         }
     }
 
@@ -139,6 +146,13 @@ public class HealthComponent : MonoBehaviour
                 agent.enabled = false;
                 break;
 
+            case 4:
+                colliderEntity.enabled = false;
+                scriptEnemyTurret.enabled = false;
+                StartCoroutine(TurretDeath());
+                m_IsFalling = true;
+                break;
+
             default:
                 Debug.Log("Pas d'enemyKind déclaré");
                 break;
@@ -147,7 +161,16 @@ public class HealthComponent : MonoBehaviour
         Debug.Log(this.gameObject + " is Dead");
         // Destroy(gameObject);
     }
-    
+
+    IEnumerator TurretDeath()
+    {
+        Debug.Log("Yes");
+        // this.gameObject.transform.position += new Vector3(0, -1f ,0);
+        yield return new WaitForSeconds(2);
+        Debug.Log("Yessai");
+        Destroy(transform.parent.gameObject);
+    }
+
 }
 
 
