@@ -47,6 +47,7 @@ public class EnemyTurret : MonoBehaviour
         {
             currentTimeBeforeShoot = 0;
             particleShoot.Stop();
+            particleShoot.Clear();
         }
     }
     void Shoot()

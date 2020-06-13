@@ -24,8 +24,6 @@ public class HealthComponentPlayer : MonoBehaviour
     private bool m_IsRespawning;
     public Vector3 m_RespawnPoint;
     private float respawnLength = 4;
-    private bool isFadeToBlack;
-    private bool isFadeFromBlack;
     public float fadeSpeed;
     private float waitForFade = 2;
     public bool isDead = false;
@@ -56,7 +54,7 @@ public class HealthComponentPlayer : MonoBehaviour
             Heal();
         }
 
-        if (gettingHurt)
+        if (gettingHurt && !isDead)
         {
             m_CurrentTimeBreak -= 0.03f;
             if (m_CurrentTimeBreak > 0)
@@ -89,30 +87,34 @@ public class HealthComponentPlayer : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (bloodParticle != null)
+        if (!isDead)
         {
-            bloodParticle.Play();
-        }
+            if (bloodParticle != null)
+            {
+                bloodParticle.Play();
+            }
 
-        if (hitParticle != null)
-        {
-            hitParticle.Clear();
-            hitParticle.Play();
-        }
+            if (hitParticle != null)
+            {
+                hitParticle.Clear();
+                hitParticle.Play();
+            }
         
-        // Diminue la vie et met à jour le HUD
-        currenthealth -= damage;
-        healthSlider.value -= damage;
+            // Diminue la vie et met à jour le HUD
+            currenthealth -= damage;
+            healthSlider.value -= damage;
 
-        if (currenthealth <= 0)
-        {
-            Respawn();
-            // Die();
-        }
-        else
-        {
-            anim.SetTrigger("TakeDamage");
-            gettingHurt = true;
+            if (currenthealth <= 0)
+            {
+                isDead = true;
+                Respawn();
+                // Die();
+            }
+            else
+            {
+                anim.SetTrigger("TakeDamage");
+                gettingHurt = true;
+            }
         }
     }
 
@@ -153,7 +155,8 @@ public class HealthComponentPlayer : MonoBehaviour
         yield return new WaitForSeconds(waitForFade);
         m_IsRespawning = false;
         blackScreen.enabled = false;
-        player.isMovable = true;        
+        player.isMovable = true;
+        isDead = false;
     }
 
     public void SetSpawnPoint(Vector3 newPosition)

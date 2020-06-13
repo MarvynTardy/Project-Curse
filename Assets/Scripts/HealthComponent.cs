@@ -125,11 +125,11 @@ public class HealthComponent : MonoBehaviour
     void Die()
     {
         HUD.enabled = false;
+        colliderEntity.enabled = false;
 
         switch (enemyKind)
         {
             case 1:
-                colliderEntity.enabled = false;
                 scriptEnemy.enabled = false;
                 agent.enabled = false;
                 anim.SetTrigger("isDead");
@@ -140,14 +140,12 @@ public class HealthComponent : MonoBehaviour
                 break;
 
             case 3:
-                colliderEntity.enabled = false;
                 scriptExplosiveEnemy.enabled = false;
                 scriptExplosiveEnemy.ExplosionHealthComponent();
                 agent.enabled = false;
                 break;
 
             case 4:
-                colliderEntity.enabled = false;
                 scriptEnemyTurret.enabled = false;
                 StartCoroutine(TurretDeath());
                 m_IsFalling = true;
