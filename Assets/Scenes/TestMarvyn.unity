@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 16e6703d4ca4f8c4c8b6488c9a33829d, type: 2}
+--- !u!4 &74662373 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3988498781719320811, guid: 0473017190771e94880b0e52b1d4613c,
+    type: 3}
+  m_PrefabInstance: {fileID: 545953164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &162635236
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +253,7 @@ PrefabInstance:
     - target: {fileID: 6911099588973962665, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.38
+      value: -2.52
       objectReference: {fileID: 0}
     - target: {fileID: 6911099588973962665, guid: 0473017190771e94880b0e52b1d4613c,
         type: 3}
@@ -849,7 +855,7 @@ PrefabInstance:
     - target: {fileID: 8234359075954161385, guid: ae0b62f5ff9e4274488336eed2af43cc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.290691
+      value: 20.74
       objectReference: {fileID: 0}
     - target: {fileID: 8234359075954161385, guid: ae0b62f5ff9e4274488336eed2af43cc,
         type: 3}
@@ -910,6 +916,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 456091741051580134, guid: 269e3c600f0fb714e96b8164ceb4f831,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 74662373}
+    - target: {fileID: 456091741051580134, guid: 269e3c600f0fb714e96b8164ceb4f831,
+        type: 3}
+      propertyPath: dashForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 456091741051580134, guid: 269e3c600f0fb714e96b8164ceb4f831,
+        type: 3}
+      propertyPath: dashTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 456091741051580134, guid: 269e3c600f0fb714e96b8164ceb4f831,
+        type: 3}
+      propertyPath: hitRange
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4136099707505551870, guid: 269e3c600f0fb714e96b8164ceb4f831,
         type: 3}
       propertyPath: m_Name
@@ -968,6 +994,16 @@ PrefabInstance:
     - target: {fileID: 4335365547622263120, guid: 269e3c600f0fb714e96b8164ceb4f831,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351566908778289503, guid: 269e3c600f0fb714e96b8164ceb4f831,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351566908778289503, guid: 269e3c600f0fb714e96b8164ceb4f831,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1066,7 +1102,7 @@ PrefabInstance:
     - target: {fileID: 843416430307305260, guid: 5ace1df75cb42f044ac2d5c0bd24aa20,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 15.82
       objectReference: {fileID: 0}
     - target: {fileID: 843416430307305260, guid: 5ace1df75cb42f044ac2d5c0bd24aa20,
         type: 3}
@@ -1123,6 +1159,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyTurret
       objectReference: {fileID: 0}
+    - target: {fileID: 4390001895507218745, guid: 5ace1df75cb42f044ac2d5c0bd24aa20,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390001895507218745, guid: 5ace1df75cb42f044ac2d5c0bd24aa20,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ace1df75cb42f044ac2d5c0bd24aa20, type: 3}
 --- !u!1001 &6785550447237720211
@@ -1150,7 +1196,7 @@ PrefabInstance:
     - target: {fileID: 6785550448237448115, guid: 0dc8ceba2220ff84d9c8c74feb8fa8a6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.15
+      value: 23.05
       objectReference: {fileID: 0}
     - target: {fileID: 6785550448237448115, guid: 0dc8ceba2220ff84d9c8c74feb8fa8a6,
         type: 3}
