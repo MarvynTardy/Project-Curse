@@ -20,6 +20,7 @@ public class BulletController : MonoBehaviour
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)
         {
+            Instantiate(explosionFeedback, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
 

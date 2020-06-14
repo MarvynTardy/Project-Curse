@@ -36,7 +36,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
-  attackRange: 2
+  attackRange: 1.5
   attackDamage: 2
   attackRate: 1
   attackBounce: 2
@@ -9741,7 +9741,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3795347112657115001}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.053333335, y: 0.6666667, z: 0.6666667}
+  m_LocalPosition: {x: 0.053333335, y: 0.6666667, z: 0.79}
   m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_Children: []
   m_Father: {fileID: 3988498781719320811}
@@ -19497,6 +19497,7 @@ MonoBehaviour:
   playerModel: {fileID: 72804550605777656}
   shootAttack: {fileID: 146779960278554855}
   cursor: {fileID: 2724376391039697189}
+  pauseMenu: {fileID: 0}
 --- !u!143 &6911099588973962674
 CharacterController:
   m_ObjectHideFlags: 0

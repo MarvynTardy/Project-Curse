@@ -5028,5 +5028,5 @@ MonoBehaviour:
     m_Bits: 512
   explosionRange: 1
   explosionDamage: 1
-  explosionFeedback: {fileID: 7666683706642841971, guid: 6ed738c518c2fdf4db7610d33dcd6c73,
+  explosionFeedback: {fileID: 7666683706642841971, guid: ea7c354ef1d02e04bbc3e1554b5b812a,
     type: 3}

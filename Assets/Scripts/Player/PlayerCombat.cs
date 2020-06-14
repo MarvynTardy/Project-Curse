@@ -22,6 +22,7 @@ public class PlayerCombat : MonoBehaviour
     
     private float m_NextAttackTime = 0f;
     private bool attackRevert = false;
+    private float targetTime = 20;
 
     void Start()
     {
@@ -38,6 +39,15 @@ public class PlayerCombat : MonoBehaviour
                 m_NextAttackTime = Time.time + 1f / attackRate;
             }
         }
+
+        targetTime -= Time.deltaTime;
+
+        if (targetTime <= 0.0f)
+        {
+            attackRevert = false;
+            targetTime = 20;
+        }
+
     }
 
     void Attack()
@@ -45,7 +55,10 @@ public class PlayerCombat : MonoBehaviour
         m_PlayerController.isMovable = false;
         m_PlayerController.moveDirection = Vector3.zero;
 
-        m_PlayerController.playerModel.transform.LookAt(new Vector3(m_PlayerController.pointToLook.x, m_PlayerController.playerModel.transform.position.y, m_PlayerController.pointToLook.z));
+        if (Input.GetJoystickNames().Length <= 0)
+        {
+            m_PlayerController.playerModel.transform.LookAt(new Vector3(m_PlayerController.pointToLook.x, m_PlayerController.playerModel.transform.position.y, m_PlayerController.pointToLook.z));
+        }
 
         m_PlayerController.moveDirection = transform.forward * attackBounce;
 

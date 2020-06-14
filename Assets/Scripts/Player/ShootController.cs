@@ -34,7 +34,7 @@ public class ShootController : MonoBehaviour
             Shoot();
         }
 
-        if (Input.GetKeyDown("r") && stamina < 5)
+        if (Input.GetButtonDown("Reload") && stamina < 5)
         {
             canFire = false;
         }
@@ -67,7 +67,10 @@ public class ShootController : MonoBehaviour
 
             animPlayer.SetTrigger("isFiring");
 
-            m_PlayerController.playerModel.transform.LookAt(new Vector3(m_PlayerController.pointToLook.x, m_PlayerController.playerModel.transform.position.y, m_PlayerController.pointToLook.z));
+            if (Input.GetJoystickNames().Length <= 0)
+            {
+                m_PlayerController.playerModel.transform.LookAt(new Vector3(m_PlayerController.pointToLook.x, m_PlayerController.playerModel.transform.position.y, m_PlayerController.pointToLook.z));
+            }
 
             BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
             newBullet.speed = bulletSpeed;

@@ -47,6 +47,12 @@ public class CameraController : MonoBehaviour
             pivot.Rotate(0, m_Horizontal, 0);
         }
 
+        if(Input.GetJoystickNames() != null)
+        {
+            m_Horizontal = Input.GetAxis("View") * rotateSpeed;
+            pivot.Rotate(0, m_Horizontal, 0);
+        }
+
         // Récupère la position de la souris en Y et applique la rotation à la cible
         float m_Vertical = Input.GetAxis("Mouse Y") * rotateSpeed;
 
