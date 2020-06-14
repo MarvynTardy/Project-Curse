@@ -165,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4335365547622263120}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyDasher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,35 +354,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &2593567453282524313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6868073687416905221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1027505ed51df8f4db025d942d93c48d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthSlider: {fileID: 2432263874190883042}
-  anim: {fileID: 3464531519119402832}
-  scriptEnemy: {fileID: 0}
-  scriptExplosiveEnemy: {fileID: 0}
-  scriptEnemyTurret: {fileID: 0}
-  HUD: {fileID: 5714957138285506682}
-  colliderEntity: {fileID: 4348116593475000997}
-  agent: {fileID: 0}
-  enemyKind: 2
-  replaceMat:
-  - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
-  - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
-  - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
-  maxHealth: 3
-  timeBreak: 0.2
-  currenthealth: 0
-  gettingHurt: 0
 --- !u!136 &4348116593475000997
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -391,12 +362,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6868073687416905221}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.7205462
+  m_Height: 1.4374188
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8602728, z: 0}
+  m_Center: {x: 0, y: 1.0980949, z: 0}
 --- !u!95 &3464531519119402832
 Animator:
   serializedVersion: 3
@@ -433,7 +404,40 @@ MonoBehaviour:
   dashTime: 2
   currentTimeBeforeDash: 0
   timeBeforeDash: 2
+  hitRange: 2
   detectionRange: 10
+  isDashing: 0
+  isCharging: 0
+--- !u!114 &2593567453282524313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6868073687416905221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1027505ed51df8f4db025d942d93c48d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 2432263874190883042}
+  anim: {fileID: 3464531519119402832}
+  scriptEnemy: {fileID: 0}
+  scriptExplosiveEnemy: {fileID: 0}
+  scriptEnemyTurret: {fileID: 0}
+  scriptEnemyDasher: {fileID: 456091741051580134}
+  HUD: {fileID: 5714957138285506682}
+  colliderEntity: {fileID: 4348116593475000997}
+  agent: {fileID: 0}
+  enemyKind: 2
+  replaceMat:
+  - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
+  - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
+  - {fileID: 2100000, guid: 9ede79aaf169b2e42934117958a5749a, type: 2}
+  maxHealth: 3
+  timeBreak: 0.2
+  currenthealth: 0
+  gettingHurt: 0
 --- !u!1 &8724802730363403172
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +518,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4335365547622263120}
     m_Modifications:
+    - target: {fileID: -4402865391229594895, guid: 94156fe1c70128346930fd7fa43e3d1d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 94156fe1c70128346930fd7fa43e3d1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -573,6 +582,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyDasher
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 94156fe1c70128346930fd7fa43e3d1d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 498291458559502456, guid: 94156fe1c70128346930fd7fa43e3d1d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 721056895991426811, guid: 94156fe1c70128346930fd7fa43e3d1d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220066249261940786, guid: 94156fe1c70128346930fd7fa43e3d1d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750310950313480001, guid: 94156fe1c70128346930fd7fa43e3d1d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920398215001269189, guid: 94156fe1c70128346930fd7fa43e3d1d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94156fe1c70128346930fd7fa43e3d1d, type: 3}

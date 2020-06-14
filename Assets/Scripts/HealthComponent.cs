@@ -13,6 +13,7 @@ public class HealthComponent : MonoBehaviour
     public Enemy scriptEnemy;
     public ExplosiveEnemy scriptExplosiveEnemy;
     public EnemyTurret scriptEnemyTurret;
+    public EnemyDasher scriptEnemyDasher;
     public Canvas HUD;
     public Collider colliderEntity;
     public NavMeshAgent agent;
@@ -129,22 +130,27 @@ public class HealthComponent : MonoBehaviour
 
         switch (enemyKind)
         {
+            // Ennemi de base
             case 1:
                 scriptEnemy.enabled = false;
                 agent.enabled = false;
                 anim.SetTrigger("isDead");
                 break;
 
+            // Ennemi de dasher
             case 2:
-
+                scriptEnemyDasher.enabled = false;
+                // anim.SetTrigger("isDead");
                 break;
 
+            // Ennemie kamikaze
             case 3:
                 scriptExplosiveEnemy.enabled = false;
                 scriptExplosiveEnemy.ExplosionHealthComponent();
                 agent.enabled = false;
                 break;
 
+            // Tourrelle
             case 4:
                 scriptEnemyTurret.enabled = false;
                 StartCoroutine(TurretDeath());
@@ -162,10 +168,8 @@ public class HealthComponent : MonoBehaviour
 
     IEnumerator TurretDeath()
     {
-        Debug.Log("Yes");
         // this.gameObject.transform.position += new Vector3(0, -1f ,0);
         yield return new WaitForSeconds(2);
-        Debug.Log("Yessai");
         Destroy(transform.parent.gameObject);
     }
 

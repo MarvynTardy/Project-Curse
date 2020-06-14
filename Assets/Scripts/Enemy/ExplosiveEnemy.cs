@@ -12,8 +12,9 @@ public class ExplosiveEnemy : MonoBehaviour
     public float distance;
     public float detectionRange = 10f;
     public float attackRange;
+    public float explosionRange = 4;
     public float timeExplode = 5;
-    public bool boom = false;
+    private bool boom = false;
     public Canvas HUD;
 
     void Start()
@@ -65,7 +66,7 @@ public class ExplosiveEnemy : MonoBehaviour
         HUD.enabled = false;
         animMonster.SetTrigger("isExploding");
         yield return new WaitForSeconds(timeExplode);
-        Collider[] objects = Physics.OverlapSphere(transform.position, attackRange);
+        Collider[] objects = Physics.OverlapSphere(transform.position, explosionRange);
 
         foreach (Collider obj in objects)
         {
@@ -76,7 +77,7 @@ public class ExplosiveEnemy : MonoBehaviour
         }
         Instantiate(explosion, transform.position, explosion.transform.rotation);
 
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
     private void OnDrawGizmos()
     {
@@ -84,5 +85,7 @@ public class ExplosiveEnemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectionRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, explosionRange);
     } 
 }

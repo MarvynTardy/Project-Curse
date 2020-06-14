@@ -27,6 +27,8 @@ public class HealthComponentPlayer : MonoBehaviour
     public float fadeSpeed;
     private float waitForFade = 2;
     public bool isDead = false;
+    private float lifeCooldown = 1;
+    private float m_CurrentLifeCooldown;
 
     void Start()
     {
@@ -44,6 +46,8 @@ public class HealthComponentPlayer : MonoBehaviour
 
     private void Update()
     {
+        m_CurrentLifeCooldown -= 1 * Time.deltaTime;
+
         if (Input.GetKeyDown(KeyCode.J))
         {
             TakeDamage(1);
@@ -87,8 +91,10 @@ public class HealthComponentPlayer : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (!isDead)
+        if (!isDead && m_CurrentLifeCooldown <= 0)
         {
+            m_CurrentLifeCooldown = lifeCooldown;
+
             if (bloodParticle != null)
             {
                 bloodParticle.Play();
@@ -130,9 +136,9 @@ public class HealthComponentPlayer : MonoBehaviour
         player.moveDirection = Vector3.zero;
 
         blackScreen.enabled = true;
-        blackScreen.CrossFadeAlpha(0, 0.01f, false);
+        blackScreen.CrossFadeAlpha(0, 0.01f, true);
         
-        blackScreen.CrossFadeAlpha(1, respawnLength, false);
+        blackScreen.CrossFadeAlpha(1, respawnLength, true);
         if (!m_IsRespawning)
         {
             StartCoroutine("RespawnCo");
@@ -149,7 +155,7 @@ public class HealthComponentPlayer : MonoBehaviour
         player.transform.position = m_RespawnPoint;
         healthSlider.value = healthSlider.maxValue;
         anim.SetTrigger("isRaise");
-        blackScreen.CrossFadeAlpha(0, waitForFade, false);
+        blackScreen.CrossFadeAlpha(0, waitForFade, true);
         currenthealth = maxHealth;
 
         yield return new WaitForSeconds(waitForFade);

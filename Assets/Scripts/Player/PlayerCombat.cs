@@ -22,7 +22,7 @@ public class PlayerCombat : MonoBehaviour
     
     private float m_NextAttackTime = 0f;
     private bool attackRevert = false;
-    private float targetTime = 20;
+    private float targetTime = 2;
 
     void Start()
     {
@@ -45,7 +45,8 @@ public class PlayerCombat : MonoBehaviour
         if (targetTime <= 0.0f)
         {
             attackRevert = false;
-            targetTime = 20;
+            animPlayer.SetBool("attackRevert", attackRevert);
+            targetTime = 2;
         }
 
     }
