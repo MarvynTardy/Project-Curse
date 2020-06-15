@@ -43,9 +43,9 @@ public class Checkpoint : MonoBehaviour
         // if (other.gameObject.layer.Equals("Player"))
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Debug.Log("Respawn Point set");
+            // Debug.Log("Respawn Point set");
             healthComponentPlayer.SetSpawnPoint(new Vector3 (transform.position.x, transform.position.y + 0.5f ,transform.position.z));
-            Debug.Log(healthComponentPlayer.m_RespawnPoint);
+            // Debug.Log(healthComponentPlayer.m_RespawnPoint);
             CheckpointOn();
         }
     }
