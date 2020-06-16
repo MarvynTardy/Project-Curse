@@ -143,7 +143,7 @@ MonoBehaviour:
   startPos: {fileID: 367565797}
   endPos: {fileID: 1033567511}
   travelTime: 1
-  speed: 0.05
+  speed: 0.04
   repeatable: 1
 --- !u!1 &39010228
 GameObject:

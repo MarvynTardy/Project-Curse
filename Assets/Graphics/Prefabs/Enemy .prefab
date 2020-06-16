@@ -269,8 +269,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 40
+  m_Acceleration: 40
   avoidancePriority: 50
   m_AngularSpeed: 1000
   m_StoppingDistance: 0
@@ -294,9 +294,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animMonster: {fileID: 2805020670402859134}
+  speed: 2
   distance: 0
-  detectionRange: 10
-  attackRange: 4
+  detectionRange: 12
+  attackRange: 3
   hitRange: 2.5
   IsCharge: 0
   slashParticle: {fileID: 5674382253246136166}
@@ -315,6 +316,9 @@ MonoBehaviour:
   healthSlider: {fileID: 323823680682416194}
   anim: {fileID: 2805020670402859134}
   scriptEnemy: {fileID: 2016121011358210005}
+  scriptExplosiveEnemy: {fileID: 0}
+  scriptEnemyTurret: {fileID: 0}
+  scriptEnemyDasher: {fileID: 0}
   HUD: {fileID: 3270500081902014388}
   colliderEntity: {fileID: 2016121011358210006}
   agent: {fileID: 2016121011358210004}
@@ -326,6 +330,7 @@ MonoBehaviour:
   timeBreak: 0.2
   currenthealth: 0
   gettingHurt: 0
+  isAlive: 1
 --- !u!1 &5254770505993907154
 GameObject:
   m_ObjectHideFlags: 0

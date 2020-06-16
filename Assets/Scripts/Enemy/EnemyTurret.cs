@@ -52,7 +52,7 @@ public class EnemyTurret : MonoBehaviour
     }
     void Shoot()
     {
-        Debug.Log("shoot");
+        // Debug.Log("shoot");
         BulletController newBullet = Instantiate(bulletController, firePoint.position, firePoint.rotation);
         newBullet.speed = bulletSpeed;
     }

@@ -164,7 +164,7 @@ public class HealthComponent : MonoBehaviour
                 break;
         }
 
-        Debug.Log(this.gameObject + " is Dead");
+        // Debug.Log(this.gameObject + " is Dead");
         // Destroy(gameObject);
     }
 

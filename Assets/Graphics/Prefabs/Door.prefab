@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4610496436695315408}
-  - component: {fileID: 8827463027387991114}
   - component: {fileID: 8827463027387991115}
   - component: {fileID: 512363773630357882}
   m_Layer: 0
@@ -34,25 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8827463027387991114
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693730041220776387}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ad3790e1c2e43614cb6086fc91520050, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &8827463027387991115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66dc6776ae4dcbb4eab0d13e4627e09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animDoor: {fileID: 8827463027387991114}
+  animDoor: {fileID: 0}
   targetToKill: {fileID: 0}
   doorUnlocked: 0
 --- !u!65 &512363773630357882
@@ -92,6 +72,7 @@ GameObject:
   - component: {fileID: 3931669759367103187}
   - component: {fileID: 4958868314537002250}
   - component: {fileID: 8595434939927408880}
+  - component: {fileID: 273927840817419868}
   m_Layer: 0
   m_Name: PORTE016
   m_TagString: Untagged
@@ -161,3 +142,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &273927840817419868
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876058716884161931}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad3790e1c2e43614cb6086fc91520050, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

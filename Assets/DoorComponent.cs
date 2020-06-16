@@ -4,46 +4,46 @@ using UnityEngine;
 
 public class DoorComponent : MonoBehaviour
 {
-    public Animator animDoor;
     public GameObject targetToKill;
-    // public HealthComponent[] enemyToKill;
-    // public int enemyKilled = 0;
     public bool doorUnlocked = false;
-    private Collider m_ColliderDoor;
-    public HealthComponent hcTarget;
+    private HealthComponent hcTarget;
+    // public Animator animDoor;
+    // private Collider m_ColliderDoor;
+
+    public HealthComponent[] enemyToKill;
+    public int enemyKilled = 0;
 
     void Start()
     {
-        m_ColliderDoor = GetComponent<Collider>();
-        hcTarget = GetComponentInChildren<HealthComponent>();
+        // m_ColliderDoor = GetComponent<Collider>();
+        hcTarget = targetToKill.GetComponentInChildren<HealthComponent>();
     }
 
     void Update()
     {
-        /*if (!hcTarget.isAlive)
-        {
-            doorUnlocked = true;
-        }
-        
         if (doorUnlocked)
         {
-            animDoor.SetTrigger("isOpen");
-            m_ColliderDoor.enabled = false;
-        }*/
-
-        /*if (enemyKilled == enemyToKill.Length + 1)
-        {
-            doorUnlocked = true;
+            this.gameObject.transform.position += new Vector3(0, -0.05f, 0);
+            // m_ColliderDoor.enabled = false;
+            // animDoor.SetTrigger("isOpen");
         }
 
+        /* if (!hcTarget.isAlive)
+        {
+            doorUnlocked = true;
+        }*/ 
 
-        foreach (HealthComponent hc in enemyToKill)
+        /* foreach (HealthComponent hc in enemyToKill)
         {
             if (!hc.isAlive)
             {
                 enemyKilled += 1;
             }
-        }*/
+        }
 
+        if (enemyKilled == enemyToKill.Length + 1)
+        {
+            doorUnlocked = true;
+        }*/
     }
 }

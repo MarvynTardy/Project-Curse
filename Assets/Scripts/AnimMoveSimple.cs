@@ -10,7 +10,7 @@ public class AnimMoveSimple : MonoBehaviour
     public float speed;
     public bool repeatable;
 
-    float startTime;
+    float startTime = 0;
     Vector3 centerPoint;
     Vector3 startRelCenter;
     Vector3 endRelCenter;

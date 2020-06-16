@@ -49,7 +49,7 @@ public class ExplosiveEnemy : MonoBehaviour
         }
         if (boom == true)
         {
-            Debug.Log("boom");
+            // Debug.Log("boom");
             StartCoroutine(Explosion());
         }
     }
