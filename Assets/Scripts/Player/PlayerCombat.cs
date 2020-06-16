@@ -23,32 +23,36 @@ public class PlayerCombat : MonoBehaviour
     private float m_NextAttackTime = 0f;
     private bool attackRevert = false;
     private float targetTime = 2;
+    private PauseMenu pauseMenu;
 
     void Start()
     {
         m_PlayerController = GetComponentInParent<PlayerController>();
+        pauseMenu = FindObjectOfType<PauseMenu>();
     }
 
     void LateUpdate()
     {
-        if (Time.time >= m_NextAttackTime)
+        if(!pauseMenu.gameIsPaused)
         {
-            if (Input.GetButtonDown("Attack") && !m_PlayerController.isDodging)
+            if (Time.time >= m_NextAttackTime)
             {
-                Attack();
-                m_NextAttackTime = Time.time + 1f / attackRate;
+                if (Input.GetButtonDown("Attack") && !m_PlayerController.isDodging)
+                {
+                    Attack();
+                    m_NextAttackTime = Time.time + 1f / attackRate;
+                }
+            }
+
+            targetTime -= Time.deltaTime;
+
+            if (targetTime <= 0.0f)
+            {
+                attackRevert = false;
+                animPlayer.SetBool("attackRevert", attackRevert);
+                targetTime = 2;
             }
         }
-
-        targetTime -= Time.deltaTime;
-
-        if (targetTime <= 0.0f)
-        {
-            attackRevert = false;
-            animPlayer.SetBool("attackRevert", attackRevert);
-            targetTime = 2;
-        }
-
     }
 
     void Attack()

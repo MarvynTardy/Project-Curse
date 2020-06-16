@@ -31,6 +31,7 @@ public class HealthComponent : MonoBehaviour
     public float currenthealth;
     public bool gettingHurt;
     private float m_CurrentTimeBreak;
+    public bool isAlive = true;
 
     void Start()
     {
@@ -127,6 +128,7 @@ public class HealthComponent : MonoBehaviour
     {
         HUD.enabled = false;
         colliderEntity.enabled = false;
+        isAlive = false;
 
         switch (enemyKind)
         {

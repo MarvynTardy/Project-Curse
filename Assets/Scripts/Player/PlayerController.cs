@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController m_Controller;
     private Camera m_MainCamera;
     private float m_SpeedSave;
-    private float m_NextDashTime = 0f;
+    public float m_NextDashTime = 0f;
 
     void Start()
     {

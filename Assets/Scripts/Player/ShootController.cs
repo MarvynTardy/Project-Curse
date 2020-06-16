@@ -19,39 +19,44 @@ public class ShootController : MonoBehaviour
     public float stamina = 5;
     public float reloadTime = 0.5f;
     public bool canFire = true;
-       
+    private PauseMenu pauseMenu;
+
     void Start()
     {
         // m_PlayerHUD = FindObjectOfType<PlayerHUD>();
         m_PlayerController = GetComponentInParent<PlayerController>();
+        pauseMenu = FindObjectOfType<PauseMenu>();
     }
 
     void Update()
     {
-        if(Input.GetButtonDown("Shoot") && !m_PlayerController.isDodging && stamina >= 1 && canFire)
+        if(!pauseMenu.gameIsPaused)
         {
-            isFiring = true;
-            Shoot();
-        }
+            if(Input.GetButtonDown("Shoot") && !m_PlayerController.isDodging && stamina >= 1 && canFire)
+            {
+                isFiring = true;
+                Shoot();
+            }
 
-        if (Input.GetButtonDown("Reload") && stamina < 5)
-        {
-            canFire = false;
-        }
+            if (Input.GetButtonDown("Reload") && stamina < 5)
+            {
+                canFire = false;
+            }
 
-        if (stamina == 0)
-        {
-            canFire = false;
-        }
+            if (stamina == 0)
+            {
+                canFire = false;
+            }
 
-        if (!canFire)
-        {
-            Reloading();
-        }
+            if (!canFire)
+            {
+                Reloading();
+            }
 
-        if (stamina >= 5)
-        {
-            stamina = 5;
+            if (stamina >= 5)
+            {
+                stamina = 5;
+            }
         }
 
     }
