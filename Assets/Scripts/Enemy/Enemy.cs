@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public Animator animMonster;
     // Variables pour Mouvements
     NavMeshAgent agent;
+    public float speed = 2;
    
     Transform target;
 
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
        
         player = FindObjectOfType<PlayerController>();
         target = player.transform;
+        
     }
 
     
@@ -77,7 +79,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            agent.speed = 3.5f ;
+            agent.speed = 6 ;
             animMonster.SetBool("isCharge", false);
             
             
@@ -101,7 +103,7 @@ public class Enemy : MonoBehaviour
         {
             player.GetComponent<HealthComponentPlayer>().TakeDamage(1);
         }
-        agent.SetDestination(target.position);
+        agent.SetDestination(transform.forward);
         
         
     }

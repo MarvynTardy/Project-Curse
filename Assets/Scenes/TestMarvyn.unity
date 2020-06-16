@@ -837,6 +837,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2016121011358210004, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: m_Speed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016121011358210004, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: m_Acceleration
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016121011358210005, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: detectionRange
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016121011358210005, guid: ae0b62f5ff9e4274488336eed2af43cc,
+        type: 3}
+      propertyPath: attackRange
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2443111516840969307, guid: ae0b62f5ff9e4274488336eed2af43cc,
         type: 3}
       propertyPath: m_Name
@@ -929,7 +949,7 @@ PrefabInstance:
     - target: {fileID: 456091741051580134, guid: 269e3c600f0fb714e96b8164ceb4f831,
         type: 3}
       propertyPath: dashTime
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 456091741051580134, guid: 269e3c600f0fb714e96b8164ceb4f831,
         type: 3}
