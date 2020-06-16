@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("TestArthur");
     }
 
     public void QuitGame()

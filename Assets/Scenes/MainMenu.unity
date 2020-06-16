@@ -143,7 +143,7 @@ MonoBehaviour:
   startPos: {fileID: 367565797}
   endPos: {fileID: 1033567511}
   travelTime: 1
-  speed: 0.03
+  speed: 0.05
   repeatable: 1
 --- !u!1 &39010228
 GameObject:
@@ -386,7 +386,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1818207299}
-        m_MethodName: ResumeGame
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1819,12 +1819,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1818207298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53cee027f472eb449b315437873eebd9, type: 3}
+  m_Script: {fileID: 11500000, guid: a850c21bd4efa2e4e8a886a78d8719e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameIsPaused: 0
-  pauseMenuUI: {fileID: 0}
-  playerHUD: {fileID: 0}
 --- !u!114 &1818207300
 MonoBehaviour:
   m_ObjectHideFlags: 0
