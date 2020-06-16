@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -36,7 +37,9 @@ public class PlayerController : MonoBehaviour
     public ShootController shootAttack;
     public GameObject cursor;
     public PauseMenu pauseMenu;
+    public Image blackScreen;
 
+    private HealthComponentPlayer healthPlayer;
     private CharacterController m_Controller;
     private Camera m_MainCamera;
     private float m_SpeedSave;
@@ -48,6 +51,15 @@ public class PlayerController : MonoBehaviour
         m_Controller = GetComponent<CharacterController>();
         m_MainCamera = FindObjectOfType<Camera>();
         Cursor.visible = false;
+        // isMovable = false;
+
+        /*healthPlayer = GetComponent<HealthComponentPlayer>();
+        healthPlayer.RespawnCo();*/
+
+        blackScreen.enabled = true;
+        blackScreen.CrossFadeAlpha(1, 0.01f, true);
+
+        StartCoroutine(RaiseCo());
     }
 
     void Update()
@@ -182,5 +194,20 @@ public class PlayerController : MonoBehaviour
     {
         cursor.SetActive(true);
         cursor.transform.position = pos;
+    }
+
+    public IEnumerator RaiseCo()
+    {
+        animPlayer.SetTrigger("isRaise");
+        isMovable = false;
+        moveDirection = Vector3.zero;
+        blackScreen.CrossFadeAlpha(0, 4, false);
+
+        yield return new WaitForSeconds(4);
+
+        blackScreen.CrossFadeAlpha(0, 0.1f, false);
+        isMovable = true;
+        blackScreen.enabled = false;
+
     }
 }

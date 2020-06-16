@@ -4923,7 +4923,7 @@ MonoBehaviour:
   firePoint: {fileID: 843416430352915632}
   timeBeforeShoot: 4
   currentTimeBeforeShoot: 0
-  detectionRange: 20
+  detectionRange: 25.32
   bulletController: {fileID: 6090288033085508619, guid: f4e0deccf45774b4a81767d68e5de1e2,
     type: 3}
   distance: 0
@@ -4946,6 +4946,7 @@ MonoBehaviour:
   scriptEnemy: {fileID: 0}
   scriptExplosiveEnemy: {fileID: 0}
   scriptEnemyTurret: {fileID: 5907161306077388606}
+  scriptEnemyDasher: {fileID: 0}
   HUD: {fileID: 2828544042243221194}
   colliderEntity: {fileID: 5647014359528993276}
   agent: {fileID: 0}
@@ -4957,6 +4958,7 @@ MonoBehaviour:
   timeBreak: 0.2
   currenthealth: 0
   gettingHurt: 0
+  isAlive: 1
 --- !u!1 &1877503375405815040
 GameObject:
   m_ObjectHideFlags: 0

@@ -5022,7 +5022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  lifeTime: 1
+  lifeTime: 2
   layer:
     serializedVersion: 2
     m_Bits: 512

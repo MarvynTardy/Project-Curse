@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693730041220776387}
-  m_LocalRotation: {x: -0.7071067, y: 0.00000006058608, z: 0.000000060586075, w: 0.7071068}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -44.82, y: 0.3123727, z: -6.5228577}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.73735, y: 0.73735, z: 0.73735}
   m_Children:
   - {fileID: 3931669759367103187}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!114 &8827463027387991115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66dc6776ae4dcbb4eab0d13e4627e09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animDoor: {fileID: 0}
   targetToKill: {fileID: 0}
   doorUnlocked: 0
+  enemyToKill: []
+  enemyKilled: 0
 --- !u!65 &512363773630357882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72,7 +73,6 @@ GameObject:
   - component: {fileID: 3931669759367103187}
   - component: {fileID: 4958868314537002250}
   - component: {fileID: 8595434939927408880}
-  - component: {fileID: 273927840817419868}
   m_Layer: 0
   m_Name: PORTE016
   m_TagString: Untagged
@@ -120,8 +120,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4738490526110543426, guid: ca811be4dfda32c4582d0260b34132b3, type: 3}
-  - {fileID: 6456940790829494949, guid: ca811be4dfda32c4582d0260b34132b3, type: 3}
+  - {fileID: 2100000, guid: 981049d90a2f957429239b034bcdc65a, type: 2}
+  - {fileID: 2100000, guid: 7c3bbcb9f0b9ab24bafc8ded3ea5c4e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,22 +142,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!95 &273927840817419868
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876058716884161931}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ad3790e1c2e43614cb6086fc91520050, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

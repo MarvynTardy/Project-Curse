@@ -9,10 +9,12 @@ public class DisplayTextTrigger : MonoBehaviour
     public Text textTuto;
     public Image fadeTuto;
     private bool isActive = false;
+    public float fadeDuration = 1;
+    public Collider colliderTrigger;
 
     public void Start()
     {
-        
+        // colliderTrigger = GetComponent<Collider>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,8 +29,8 @@ public class DisplayTextTrigger : MonoBehaviour
                 textTuto.enabled = true;
                 fadeTuto.enabled = true;
 
-                textTuto.CrossFadeAlpha(1, 1, true);
-                fadeTuto.CrossFadeAlpha(0.6f, 1, true);
+                textTuto.CrossFadeAlpha(1, fadeDuration, true);
+                fadeTuto.CrossFadeAlpha(0.6f, fadeDuration, true);
 
                 isActive = true;
             }
@@ -40,6 +42,5 @@ public class DisplayTextTrigger : MonoBehaviour
                 isActive = true;
             }
         }
-
     }
 }

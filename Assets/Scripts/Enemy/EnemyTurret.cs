@@ -56,4 +56,10 @@ public class EnemyTurret : MonoBehaviour
         BulletController newBullet = Instantiate(bulletController, firePoint.position, firePoint.rotation);
         newBullet.speed = bulletSpeed;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+    }
 }

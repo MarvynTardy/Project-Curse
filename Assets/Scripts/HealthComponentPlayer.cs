@@ -139,17 +139,19 @@ public class HealthComponentPlayer : MonoBehaviour
         blackScreen.CrossFadeAlpha(0, 0.01f, true);
         
         blackScreen.CrossFadeAlpha(1, respawnLength, true);
+
+        m_IsRespawning = true;
+        anim.SetTrigger("isDead");
+        Debug.Log("Respawn");
         if (!m_IsRespawning)
         {
-            StartCoroutine("RespawnCo");
+            StartCoroutine(RespawnCo());
         }
     }
 
     public IEnumerator RespawnCo()
     {
-        m_IsRespawning = true;
-        anim.SetTrigger("isDead");
-        Debug.Log("Respawn");
+        Debug.Log("IsRespawning");
 
         yield return new WaitForSeconds(respawnLength);
         player.transform.position = m_RespawnPoint;
