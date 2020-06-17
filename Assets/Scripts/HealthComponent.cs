@@ -142,7 +142,7 @@ public class HealthComponent : MonoBehaviour
             // Ennemi de dasher
             case 2:
                 scriptEnemyDasher.enabled = false;
-                // anim.SetTrigger("isDead");
+                anim.SetTrigger("isDead");
                 break;
 
             // Ennemie kamikaze
