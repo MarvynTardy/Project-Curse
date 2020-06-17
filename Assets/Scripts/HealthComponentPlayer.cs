@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HealthComponentPlayer : MonoBehaviour
@@ -159,6 +160,7 @@ public class HealthComponentPlayer : MonoBehaviour
         anim.SetTrigger("isRaise");
         blackScreen.CrossFadeAlpha(0, waitForFade, true);
         currenthealth = maxHealth;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         yield return new WaitForSeconds(waitForFade);
         m_IsRespawning = false;
