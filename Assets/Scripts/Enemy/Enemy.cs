@@ -104,8 +104,20 @@ public class Enemy : MonoBehaviour
             player.GetComponent<HealthComponentPlayer>().TakeDamage(1);
         }
         agent.SetDestination(transform.forward);
-        
-        
+
+        int shootTurret = Random.Range(0, 1);
+
+        switch (shootTurret)
+        {
+            case 0:
+                FindObjectOfType<AudioManager>().Play("HitEnemy1");
+                break;
+
+            case 1:
+                FindObjectOfType<AudioManager>().Play("HitEnemy2");
+                break;
+        }
+
     }
     void IsMoveable()
     {
@@ -125,5 +137,29 @@ public class Enemy : MonoBehaviour
     {
         IsCharge = false;
         
+    }
+
+    public void FootStepSound()
+    {
+        int footStepEnemy = Random.Range(0, 3);
+
+        switch (footStepEnemy)
+        {
+            case 0:
+                FindObjectOfType<AudioManager>().Play("FootStepEnemy1");
+                break;
+
+            case 1:
+                FindObjectOfType<AudioManager>().Play("FootStepEnemy2");
+                break;
+
+            case 2:
+                FindObjectOfType<AudioManager>().Play("FootStepEnemy3");
+                break;
+
+            case 3:
+                FindObjectOfType<AudioManager>().Play("FootStepEnemy4");
+                break;
+        }
     }
 }

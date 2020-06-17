@@ -32,8 +32,9 @@ public class ExplosiveEnemy : MonoBehaviour
 
         if (distance <= detectionRange)
         {
-           agent.SetDestination(target.position);
-           animMonster.SetBool("IsRunning", true);
+            FindObjectOfType<AudioManager>().Play("BulkirulRun");
+            agent.SetDestination(target.position);
+            animMonster.SetBool("IsRunning", true);
 
         }
         else
@@ -62,6 +63,7 @@ public class ExplosiveEnemy : MonoBehaviour
 
     IEnumerator Explosion()
     {
+
         agent.isStopped = true;
         HUD.enabled = false;
         animMonster.SetTrigger("isExploding");
@@ -76,6 +78,7 @@ public class ExplosiveEnemy : MonoBehaviour
             }
         }
         Instantiate(explosion, transform.position, explosion.transform.rotation);
+        FindObjectOfType<AudioManager>().Play("BulkirulExplode");
 
         Destroy(transform.parent.gameObject);
     }

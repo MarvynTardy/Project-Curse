@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("MainTheme");
         pauseMenu = FindObjectOfType<PauseMenu>();
         m_Controller = GetComponent<CharacterController>();
         m_MainCamera = FindObjectOfType<Camera>();

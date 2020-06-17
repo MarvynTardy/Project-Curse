@@ -98,4 +98,9 @@ public class EnemyDasher : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, hitRange);
 
     }
+
+    public void DashEnemySound()
+    {
+        FindObjectOfType<AudioManager>().Play("DashEnemy");
+    }
 }

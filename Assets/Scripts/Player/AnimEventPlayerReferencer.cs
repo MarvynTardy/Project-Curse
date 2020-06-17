@@ -46,6 +46,7 @@ public class AnimEventPlayerReferencer : MonoBehaviour
     {
         dust.Play();
     }
+
     public void ShootDisplay()
     {
         fireLoad.Clear();
@@ -54,5 +55,53 @@ public class AnimEventPlayerReferencer : MonoBehaviour
         fireLoad.Play();
         fireFlash.Play();
         fireRing.Play();
+    }
+
+    public void FootStepSound()
+    {
+        int footStep = Random.Range(0, 4);
+
+        switch (footStep)
+        {
+            case 0:
+                FindObjectOfType<AudioManager>().Play("FootStep1");
+                break;
+
+            case 1:
+                FindObjectOfType<AudioManager>().Play("FootStep2");
+                break;
+
+            case 2:
+                FindObjectOfType<AudioManager>().Play("FootStep3");
+                break;
+
+            case 3:
+                FindObjectOfType<AudioManager>().Play("FootStep4");
+                break;
+
+            case 4:
+                FindObjectOfType<AudioManager>().Play("FootStep5");
+                break;
+        }
+    }
+
+    public void DashSound()
+    {
+        int dashPlayer = Random.Range(0, 2);
+
+        switch (dashPlayer)
+        {
+            case 0:
+                FindObjectOfType<AudioManager>().Play("DashPlayer1");
+                break;
+
+            case 1:
+                FindObjectOfType<AudioManager>().Play("DashPlayer2");
+                break;
+
+            case 2:
+                FindObjectOfType<AudioManager>().Play("DashPlayer3");
+                break;
+        }
     }
 }

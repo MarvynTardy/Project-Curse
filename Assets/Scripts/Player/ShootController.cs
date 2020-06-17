@@ -36,6 +36,28 @@ public class ShootController : MonoBehaviour
             {
                 isFiring = true;
                 Shoot();
+                int shootPlayer = Random.Range(0, 3);
+                switch (shootPlayer)
+                {
+                    case 0:
+                        FindObjectOfType<AudioManager>().Play("ShootPlayer1");
+                        break;
+
+                    case 1:
+                        FindObjectOfType<AudioManager>().Play("ShootPlayer2");
+                        break;
+
+                    case 2:
+                        FindObjectOfType<AudioManager>().Play("ShootPlayer3");
+                        break;
+
+                    case 3:
+                        FindObjectOfType<AudioManager>().Play("ShootPlayer4");
+                        break;
+
+                    
+
+                }
             }
 
             if (Input.GetButtonDown("Reload") && stamina < 5)

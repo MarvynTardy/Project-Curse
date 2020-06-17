@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3128974481152786653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3128974481152786655}
+  - component: {fileID: 3128974481152786654}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3128974481152786655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3128974481152786653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -131.51013, y: 25.669443, z: -13.5179615}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3128974481152786654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3128974481152786653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea888f4473b70cf4aaad9765ea7d5aff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: ShootPlayer1
+    clip: {fileID: 8300000, guid: 1f37b37117ea44646bbd2b92e05c2a70, type: 3}
+    volume: 0.67
+    loop: 0
+    source: {fileID: 0}
+  - name: ShootPlayer2
+    clip: {fileID: 8300000, guid: e671347f858b2704f9f6d676db35ed4b, type: 3}
+    volume: 0.71
+    loop: 0
+    source: {fileID: 0}
+  - name: ShootPlayer3
+    clip: {fileID: 8300000, guid: a01a676da7bdd71438f1381f64c12e48, type: 3}
+    volume: 0.69
+    loop: 0
+    source: {fileID: 0}
+  - name: ShootPlayer4
+    clip: {fileID: 8300000, guid: f02c36fb42837ec4088f2dda6145b242, type: 3}
+    volume: 0.74
+    loop: 0
+    source: {fileID: 0}
+  - name: DashPlayer1
+    clip: {fileID: 8300000, guid: c4756240b4789544f922b80fbef04129, type: 3}
+    volume: 0.7
+    loop: 0
+    source: {fileID: 0}
+  - name: DashPlayer2
+    clip: {fileID: 8300000, guid: 1fda975050a86484eb657829f90fa625, type: 3}
+    volume: 0.69
+    loop: 0
+    source: {fileID: 0}
+  - name: DashPlayer3
+    clip: {fileID: 8300000, guid: 1b6d82ff0dbf46947b3642e65532f381, type: 3}
+    volume: 0.74
+    loop: 0
+    source: {fileID: 0}
+  - name: FootStep1
+    clip: {fileID: 8300000, guid: c434c6d6421d04643b34a43caf618ae0, type: 3}
+    volume: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: FootStep2
+    clip: {fileID: 8300000, guid: 8524b14613e62ea4898a8e91d29355af, type: 3}
+    volume: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: FootStep3
+    clip: {fileID: 8300000, guid: 5af9f3f22c25e0c4d9f824411d58f063, type: 3}
+    volume: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: FootStep4
+    clip: {fileID: 8300000, guid: fa5c8c32cf687b6409822efa70346065, type: 3}
+    volume: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: FootStep5
+    clip: {fileID: 8300000, guid: 1ed9b1cc981e7a74da3331f35555ea97, type: 3}
+    volume: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: HitAttack1
+    clip: {fileID: 8300000, guid: 0dcc2d196b17f27459a22c626eb1d99a, type: 3}
+    volume: 0.81
+    loop: 0
+    source: {fileID: 0}
+  - name: HitAttack2
+    clip: {fileID: 8300000, guid: a741d11002ead6b49974acddc87a9564, type: 3}
+    volume: 0.68
+    loop: 0
+    source: {fileID: 0}
+  - name: HitAttack3
+    clip: {fileID: 8300000, guid: d7ba1ea2c7182904bb932e25e0829690, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MissAttack1
+    clip: {fileID: 8300000, guid: be56683b5143be04a9578e4690f7e574, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MissAttack2
+    clip: {fileID: 8300000, guid: 134445f1242e25c43bf2209cfb081ccf, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerHit1
+    clip: {fileID: 8300000, guid: 6112cc6c63d1f634ab5c51196a03b1f3, type: 3}
+    volume: 2
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerHit2
+    clip: {fileID: 8300000, guid: 6cb8240a67bb486419285f5aa021c245, type: 3}
+    volume: 2
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerHit3
+    clip: {fileID: 8300000, guid: 05a35bbdc9270ca40979435d7e681120, type: 3}
+    volume: 2
+    loop: 0
+    source: {fileID: 0}
+  - name: SoundCheckpoint1
+    clip: {fileID: 8300000, guid: 9231cb495de9cb347bc3810037bb7719, type: 3}
+    volume: 2
+    loop: 0
+    source: {fileID: 0}
+  - name: SoundCheckpoint2
+    clip: {fileID: 8300000, guid: 85802090c26660b41ae0805849f7fc89, type: 3}
+    volume: 2
+    loop: 0
+    source: {fileID: 0}
+  - name: SoundCheckpoint3
+    clip: {fileID: 8300000, guid: 879612451d9f4ba4ba2b1f3cfe236b93, type: 3}
+    volume: 2
+    loop: 0
+    source: {fileID: 0}
+  - name: BulkirulRun
+    clip: {fileID: 8300000, guid: df05cde9e67b85a449956e3d954d9ba5, type: 3}
+    volume: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: BulkirulExplode
+    clip: {fileID: 8300000, guid: 96e20be78cf9081458fa63143c2a12ea, type: 3}
+    volume: 0.6
+    loop: 0
+    source: {fileID: 0}
+  - name: ShootTurret1
+    clip: {fileID: 8300000, guid: 5516b27fe5b2b3c49a2f7c2745dd8307, type: 3}
+    volume: 0.21
+    loop: 0
+    source: {fileID: 0}
+  - name: ShootTurret2
+    clip: {fileID: 8300000, guid: 7afc4e1ffaa6de64f9b4858d4d2f0ea6, type: 3}
+    volume: 0.21
+    loop: 0
+    source: {fileID: 0}
+  - name: ShootTurret3
+    clip: {fileID: 8300000, guid: 1a844b718ce3b8a4298ce888c45580fa, type: 3}
+    volume: 0.22
+    loop: 0
+    source: {fileID: 0}
+  - name: HitEnemy1
+    clip: {fileID: 8300000, guid: aa5dcdf1d607c5846acf836b7976eed4, type: 3}
+    volume: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: HitEnemy2
+    clip: {fileID: 8300000, guid: 698acc5918f40c84b81d2e62ae1b9a87, type: 3}
+    volume: 0.22
+    loop: 0
+    source: {fileID: 0}
+  - name: FootStepEnemy1
+    clip: {fileID: 8300000, guid: 4b7605c7d7268c24e84b3c4bd16f714f, type: 3}
+    volume: 0.22
+    loop: 0
+    source: {fileID: 0}
+  - name: FootStepEnemy2
+    clip: {fileID: 8300000, guid: 1cf3e70b81d4f7e4196623b88eb4e9b4, type: 3}
+    volume: 0.22
+    loop: 0
+    source: {fileID: 0}
+  - name: FootStepEnemy3
+    clip: {fileID: 8300000, guid: 565afbc5f94d4964e9aa45bb43fc90c9, type: 3}
+    volume: 0.22
+    loop: 0
+    source: {fileID: 0}
+  - name: FootStepEnemy4
+    clip: {fileID: 8300000, guid: 7fd8194ee1d733f48b8699ebc78c2c72, type: 3}
+    volume: 0.22
+    loop: 0
+    source: {fileID: 0}
+  - name: DashEnemy
+    clip: {fileID: 8300000, guid: 27507b22b88184a49a3be4ecd82e7716, type: 3}
+    volume: 0.22
+    loop: 0
+    source: {fileID: 0}
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: 61d5adb8ce01fc44fb1809eea1a7b30a, type: 3}
+    volume: 0.4
+    loop: 1
+    source: {fileID: 0}

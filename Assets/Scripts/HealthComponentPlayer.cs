@@ -75,8 +75,25 @@ public class HealthComponentPlayer : MonoBehaviour
                 redWarning.enabled = false;
                 gettingHurt = false;
                 m_CurrentTimeBreak = timeBreak;
-            }
 
+                int playerHit = Random.Range(0, 2);
+
+                switch (playerHit)
+                {
+
+                    case 0:
+                        FindObjectOfType<AudioManager>().Play("PlayerHit1");
+                        break;
+
+                    case 1:
+                        FindObjectOfType<AudioManager>().Play("PlayerHit2");
+                        break;
+
+                    case 2:
+                        FindObjectOfType<AudioManager>().Play("PlayerHit3");
+                        break;
+                }
+            }
         }
     }
 
@@ -122,6 +139,8 @@ public class HealthComponentPlayer : MonoBehaviour
                 anim.SetTrigger("TakeDamage");
                 gettingHurt = true;
             }
+
+            
         }
     }
 

@@ -55,6 +55,24 @@ public class EnemyTurret : MonoBehaviour
         // Debug.Log("shoot");
         BulletController newBullet = Instantiate(bulletController, firePoint.position, firePoint.rotation);
         newBullet.speed = bulletSpeed;
+
+        int shootTurret = Random.Range(0, 2);
+
+        switch (shootTurret)
+        {
+            case 0:
+                FindObjectOfType<AudioManager>().Play("ShootTurret1");
+                break;
+
+            case 1:
+                FindObjectOfType<AudioManager>().Play("ShootTurret2");
+                break;
+
+            case 2:
+                FindObjectOfType<AudioManager>().Play("ShootTurret3");
+                break;
+        }
+        
     }
 
     private void OnDrawGizmos()

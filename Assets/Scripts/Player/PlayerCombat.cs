@@ -71,7 +71,42 @@ public class PlayerCombat : MonoBehaviour
 
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 
-        foreach(Collider enemy in hitEnemies)
+        if (hitEnemies.Length > 0)
+        {
+            int hitAttack = Random.Range(0, 2);
+
+            switch (hitAttack)
+            {
+                case 0:
+                    FindObjectOfType<AudioManager>().Play("HitAttack1");
+                    break;
+
+                case 1:
+                    FindObjectOfType<AudioManager>().Play("HitAttack2");
+                    break;
+
+                case 2:
+                    FindObjectOfType<AudioManager>().Play("HitAttack3");
+                    break;            
+            }
+
+        }
+        else
+        {
+            int missAttack = Random.Range(0, 1);
+            switch (missAttack)
+            {
+                case 0:
+                    FindObjectOfType<AudioManager>().Play("MissAttack1");
+                    break;
+                case 1:
+                    FindObjectOfType<AudioManager>().Play("MissAttack2");
+                    break;
+            }
+            
+        }
+
+        foreach (Collider enemy in hitEnemies)
         {
             enemy.GetComponentInParent<HealthComponent>().TakeDamage(attackDamage);
         }

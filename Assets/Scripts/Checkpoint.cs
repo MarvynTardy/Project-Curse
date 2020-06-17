@@ -47,6 +47,23 @@ public class Checkpoint : MonoBehaviour
             healthComponentPlayer.SetSpawnPoint(new Vector3 (transform.position.x, transform.position.y + 0.5f ,transform.position.z));
             // Debug.Log(healthComponentPlayer.m_RespawnPoint);
             CheckpointOn();
+
+            int soundCheckpoint = Random.Range(0, 2);
+
+            switch (soundCheckpoint)
+            {
+                case 0:
+                    FindObjectOfType<AudioManager>().Play("SoundCheckpoint1");
+                    break;
+
+                case 1:
+                    FindObjectOfType<AudioManager>().Play("SoundCheckpoint2");
+                    break;
+
+                case 2:
+                    FindObjectOfType<AudioManager>().Play("SoundCheckpoint3");
+                    break;
+            }
         }
     }
 }
