@@ -13,10 +13,12 @@ public class DisplayEnd : MonoBehaviour
     private bool isActive = false;
     public float fadeDuration = 1;
     public Collider colliderTrigger;
+    PlayerController m_PlayerController;
 
     public void Start()
     {
         // colliderTrigger = GetComponent<Collider>();
+        m_PlayerController = FindObjectOfType<PlayerController>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,6 +27,12 @@ public class DisplayEnd : MonoBehaviour
         {
             if (isDisplaying)
             {
+                m_PlayerController.isMovable = false;
+                m_PlayerController.moveDirection = Vector3.zero;
+
+                HealthComponentPlayer healthComponentPlayer = m_PlayerController.GetComponentInChildren<HealthComponentPlayer>();
+                healthComponentPlayer.Respawn();
+
                 logoJeu.CrossFadeAlpha(0, 0.01f, true);
                 fadeWhite.CrossFadeAlpha(0, 0.01f, true);
                 gradientBlack.CrossFadeAlpha(0, 0.01f, true);
