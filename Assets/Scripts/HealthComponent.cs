@@ -71,7 +71,7 @@ public class HealthComponent : MonoBehaviour
 
         if (enemyKind == 4 && m_IsFalling)
         {
-            this.gameObject.transform.position += new Vector3(0, -0.05f, 0);
+            this.gameObject.transform.position += new Vector3(0, -0.1f, 0);
         }
     }
 

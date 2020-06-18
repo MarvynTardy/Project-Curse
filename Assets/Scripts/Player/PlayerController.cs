@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
         m_Controller = GetComponent<CharacterController>();
         m_MainCamera = FindObjectOfType<Camera>();
         Cursor.visible = false;
+        healthPlayer = FindObjectOfType<HealthComponentPlayer>();
         // isMovable = false;
 
         /*healthPlayer = GetComponent<HealthComponentPlayer>();
@@ -65,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!pauseMenu.gameIsPaused)
+        if (!pauseMenu.gameIsPaused && !healthPlayer.isDead)
         {
             MouseTarget();
 

@@ -24,7 +24,7 @@ public class DoorComponent : MonoBehaviour
     {
         if (doorUnlocked)
         {
-            this.gameObject.transform.position += new Vector3(0, -0.05f, 0);
+            this.gameObject.transform.position += new Vector3(0, -0.04f, 0);
             StartCoroutine(DoorDestroy());
             // m_ColliderDoor.enabled = false;
             // animDoor.SetTrigger("isOpen");

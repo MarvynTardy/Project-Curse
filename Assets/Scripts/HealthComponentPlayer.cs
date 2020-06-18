@@ -163,9 +163,9 @@ public class HealthComponentPlayer : MonoBehaviour
         m_IsRespawning = true;
         anim.SetTrigger("isDead");
         Debug.Log("Respawn");
-        if (!m_IsRespawning)
+        if (m_IsRespawning)
         {
-            StartCoroutine(RespawnCo());
+            StartCoroutine("RespawnCo");
         }
     }
 
@@ -179,7 +179,6 @@ public class HealthComponentPlayer : MonoBehaviour
         anim.SetTrigger("isRaise");
         blackScreen.CrossFadeAlpha(0, waitForFade, true);
         currenthealth = maxHealth;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         yield return new WaitForSeconds(waitForFade);
         m_IsRespawning = false;

@@ -223,7 +223,7 @@ MonoBehaviour:
   detectionRange: 15
   attackRange: 2
   explosionRange: 4
-  timeExplode: 1
+  timeExplode: 0.5
   HUD: {fileID: 7652395020056023501}
 --- !u!1 &3301617630055369213
 GameObject:
@@ -520,6 +520,7 @@ MonoBehaviour:
   timeBreak: 0.2
   currenthealth: 0
   gettingHurt: 0
+  isAlive: 1
 --- !u!1001 &6785550446709102033
 PrefabInstance:
   m_ObjectHideFlags: 0
