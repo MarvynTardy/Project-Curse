@@ -122,6 +122,7 @@ public class Enemy : MonoBehaviour
     void IsMoveable()
     {
         agent.isStopped = false;
+        IsCharge = false;
 
     }
     void MultiplySpeed()
