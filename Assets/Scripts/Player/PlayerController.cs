@@ -62,6 +62,11 @@ public class PlayerController : MonoBehaviour
         blackScreen.CrossFadeAlpha(1, 0.01f, true);
 
         StartCoroutine(RaiseCo());
+
+        if (Input.GetJoystickNames().Length <= 0)
+        {
+            cursor.SetActive(false);   
+        }
     }
 
     void Update()

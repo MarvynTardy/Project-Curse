@@ -16,8 +16,8 @@ TagManager:
   - 
   - EnemyLayer
   - Player
-  - 
-  - 
+  - Minimap
+  - Post Processing
   - 
   - 
   - 

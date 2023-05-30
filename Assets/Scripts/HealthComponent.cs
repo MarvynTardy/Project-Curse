@@ -17,9 +17,10 @@ public class HealthComponent : MonoBehaviour
     public Canvas HUD;
     public Collider colliderEntity;
     public NavMeshAgent agent;
+    public GameObject minimapRender;
     [Range(0, 4)]
     public int enemyKind;
-    SkinnedMeshRenderer characterRenderer = null;
+    MeshRenderer characterRenderer = null;
 
     Material[] savedMat;
     public Material[] replaceMat;
@@ -40,7 +41,7 @@ public class HealthComponent : MonoBehaviour
         currenthealth = maxHealth;
 
         m_CurrentTimeBreak = timeBreak;
-        characterRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        characterRenderer = GetComponentInChildren<MeshRenderer>();
         savedMat = new Material[characterRenderer.materials.Length];
         for (int i = 0; i < characterRenderer.materials.Length; i++)
         {
@@ -129,6 +130,7 @@ public class HealthComponent : MonoBehaviour
         HUD.enabled = false;
         colliderEntity.enabled = false;
         isAlive = false;
+        minimapRender.SetActive(false);
 
         switch (enemyKind)
         {
